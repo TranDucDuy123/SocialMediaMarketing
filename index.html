@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QT & Infinity Marketing Partnership Proposal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; background-color: #0f172a; color: #e2e8f0; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1e293b; }
+        ::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 4px; }
+        .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .chart-container { position: relative; height: 350px; width: 100%; }
+        .highlight-text { color: #f59e0b; } /* Amber 500 */
+        .fade-in-up { animation: fadeInUp 0.8s ease-out; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+    <!-- Chosen Palette: Dark Business (Slate Base) + Gold/Amber (Value/Opportunity) + Blue (Trust) -->
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 glass-panel border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl text-amber-500">🤝</span>
+                    <span class="font-bold text-xl tracking-tight text-white">QT & Infinity <span class="text-gray-400 text-sm font-normal">| Partnership Proposal</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#vision" class="hover:text-amber-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Tầm Nhìn</a>
+                        <a href="#value" class="hover:text-amber-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Giá Trị Thị Trường</a>
+                        <a href="#plan" class="hover:text-amber-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Kế Hoạch</a>
+                        <a href="#offer" class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-md text-sm font-bold transition-colors shadow-lg">Lời Đề Nghị</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-20 w-full">
+
+        <!-- 1. Hero Section: The "Why" -->
+        <section id="vision" class="text-center space-y-6 animate-fade-in-up pt-10">
+            <div class="inline-block px-4 py-1 rounded-full bg-blue-900/50 border border-blue-500/30 text-blue-300 text-sm font-semibold mb-4">
+                Đề Xuất Hợp Tác Chiến Lược
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">
+                Không Chỉ Là Marketing.<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">Đó Là Sự Đồng Hành.</span>
+            </h1>
+            <p class="max-w-3xl mx-auto text-lg text-gray-400 leading-relaxed">
+                Em không tìm kiếm một công việc làm thuê tính lương theo giờ. Em tìm kiếm một <span class="text-white font-bold">Dự án Tiềm năng</span> để thử thách bản thân và cùng anh xây dựng một đế chế Bida chuẩn chỉnh từ Online đến Offline.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 text-left">
+                <div class="glass-panel p-6 rounded-xl border-t-4 border-blue-500 hover:-translate-y-1 transition-transform">
+                    <div class="text-3xl mb-3">🧠</div>
+                    <h3 class="text-lg font-bold text-white">Tư Duy IT & Data</h3>
+                    <p class="text-sm text-gray-400 mt-2">Marketing không chỉ là viết hay, mà là đo lường được. Em dùng tư duy hệ thống để tối ưu từng đồng chi phí.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border-t-4 border-amber-500 hover:-translate-y-1 transition-transform">
+                    <div class="text-3xl mb-3">🎱</div>
+                    <h3 class="text-lg font-bold text-white">Thấu Hiểu Người Chơi</h3>
+                    <p class="text-sm text-gray-400 mt-2">Là một cơ thủ, em biết khách hàng cần gì, sợ gì (cơ cong, bàn rít...). Content của em là "chạm", không phải quảng cáo sáo rỗng.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border-t-4 border-emerald-500 hover:-translate-y-1 transition-transform">
+                    <div class="text-3xl mb-3">🔥</div>
+                    <h3 class="text-lg font-bold text-white">Lòng Thành & Cam Kết</h3>
+                    <p class="text-sm text-gray-400 mt-2">Đặt hiệu quả lên hàng đầu. Sẵn sàng nhận mức phí hỗ trợ tối thiểu để chứng minh năng lực trước khi đòi hỏi quyền lợi.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Market Value Comparison (The "Shock" Factor) -->
+        <section id="value" class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <h2 class="text-3xl font-bold text-white">Giá Trị Thực Tế vs. Đề Xuất Của Em</h2>
+                <p class="text-gray-400">
+                    Nếu anh thuê ngoài từng hạng mục này, chi phí hàng tháng sẽ rất lớn và khó quản lý sự đồng bộ. Em mang đến giải pháp <span class="text-white font-bold">"All-in-One"</span> với mức rủi ro bằng 0 cho anh.
+                </p>
+                
+                <ul class="space-y-4 mt-4">
+                    <li class="flex justify-between items-center border-b border-gray-700 pb-2">
+                        <span class="text-gray-300">Quản lý 3 Fanpage & TikTok</span>
+                        <span class="text-gray-500 font-mono">~ 10.000.000đ/tháng</span>
+                    </li>
+                    <li class="flex justify-between items-center border-b border-gray-700 pb-2">
+                        <span class="text-gray-300">Sản xuất 4 Video/Tháng (Quay+Dựng)</span>
+                        <span class="text-gray-500 font-mono">~ 8.000.000đ/tháng</span>
+                    </li>
+                    <li class="flex justify-between items-center border-b border-gray-700 pb-2">
+                        <span class="text-gray-300">Viết Blog & SEO Website</span>
+                        <span class="text-gray-500 font-mono">~ 4.000.000đ/tháng</span>
+                    </li>
+                    <li class="flex justify-between items-center pt-2">
+                        <strong class="text-white">TỔNG GIÁ THỊ TRƯỜNG</strong>
+                        <strong class="text-red-400 font-mono text-lg">~ 22.000.000đ/tháng</strong>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="glass-panel p-6 rounded-xl">
+                <h3 class="text-center text-white font-bold mb-4">Biểu Đồ So Sánh Chi Phí Đầu Tư</h3>
+                <div class="chart-container">
+                    <canvas id="valueChart"></canvas>
+                </div>
+                <p class="text-center text-xs text-gray-500 mt-4">* Phần chênh lệch chính là sự đầu tư của em vào mối quan hệ hợp tác này.</p>
+            </div>
+        </section>
+
+        <!-- 3. The Execution Plan (Marketing Only) -->
+        <section id="plan" class="space-y-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-white">Lộ Trình Hành Động (Giai Đoạn Thử Thách)</h2>
+                <p class="text-gray-400 mt-2">Kế hoạch triển khai Marketing thực chiến trong 3 tháng.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Month 1 -->
+                <div class="bg-gray-800/50 p-6 rounded-lg border-l-4 border-blue-500">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold text-white">Tháng 1: Xây Nền</h3>
+                        <span class="text-2xl">🏗️</span>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li>✅ <strong>Chuẩn hóa kênh:</strong> Dọn dẹp Fanpage, TikTok, cập nhật Bio, Avatar chuyên nghiệp.</li>
+                        <li>✅ <strong>Google Maps:</strong> Xác minh địa điểm, tối ưu từ khóa để khách tìm là thấy.</li>
+                        <li>✅ <strong>Content Mẫu:</strong> Sản xuất 4 video định hình phong cách (Review, Kỹ thuật).</li>
+                        <li>✅ <strong>Quy trình:</strong> Thiết lập Chatbot trả lời tự động cho Web & Page.</li>
+                    </ul>
+                </div>
+
+                <!-- Month 2 -->
+                <div class="bg-gray-800/50 p-6 rounded-lg border-l-4 border-amber-500">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold text-white">Tháng 2: Phủ Sóng</h3>
+                        <span class="text-2xl">📡</span>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li>✅ <strong>Viral Content:</strong> Đẩy mạnh các video "Đồng cảm", "Hài hước" để kéo traffic tự nhiên.</li>
+                        <li>✅ <strong>Seeding:</strong> Chia sẻ khéo léo vào các hội nhóm Bida khu vực.</li>
+                        <li>✅ <strong>Sự kiện nhỏ:</strong> Tổ chức mini-game online tặng giờ chơi/găng tay để tăng tương tác.</li>
+                    </ul>
+                </div>
+
+                <!-- Month 3 -->
+                <div class="bg-gray-800/50 p-6 rounded-lg border-l-4 border-emerald-500">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold text-white">Tháng 3: Chuyển Đổi</h3>
+                        <span class="text-2xl">💰</span>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li>✅ <strong>Bán hàng:</strong> Đẩy mạnh các bài viết chốt đơn phụ kiện Infinity.</li>
+                        <li>✅ <strong>Booking:</strong> Đo lường số khách đặt bàn qua Online.</li>
+                        <li>✅ <strong>Review & Deal:</strong> Đánh giá hiệu quả. Nếu tốt -> Ký hợp đồng chính thức hoặc tăng hoa hồng.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. The Offer (2 Million Logic) -->
+        <section id="offer" class="glass-panel p-8 md:p-12 rounded-2xl border border-amber-500/30 text-center relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-amber-500 to-emerald-500"></div>
+            
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6">Lời Đề Nghị Hợp Tác</h2>
+            <p class="max-w-2xl mx-auto text-gray-300 mb-8 text-lg">
+                Em coi QT & Infinity là một "Case Study" lớn trong sự nghiệp của mình. Vì vậy, em không đặt nặng vấn đề "Lương" mà tập trung vào "Hiệu Quả".
+            </p>
+
+            <div class="flex flex-col md:flex-row justify-center items-stretch gap-6">
+                <!-- Support Fee Card -->
+                <div class="bg-gray-900 p-6 rounded-xl border border-gray-700 w-full md:w-5/12 hover:border-amber-500 transition-colors text-left relative">
+                    <div class="absolute -top-3 -right-3 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded shadow">BEST VALUE</div>
+                    <p class="text-gray-400 text-sm uppercase tracking-wider mb-2">Chi Phí Vận Hành Cố Định</p>
+                    <div class="text-4xl font-extrabold text-white mb-1">2.000.000 <span class="text-base font-normal text-gray-500">VND/Tháng</span></div>
+                    <p class="text-xs text-amber-500 font-bold mb-4 flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Tại sao là con số này? (Bóc tách chi phí)
+                    </p>
+                    <div class="bg-gray-800/50 p-4 rounded-lg mb-4 space-y-3 text-sm text-gray-300">
+                        <div class="flex justify-between items-center border-b border-gray-700 pb-2">
+                            <span>🚗 Xăng xe & Đi lại (4 lần/tháng)</span>
+                            <span class="font-mono text-gray-400">~500k</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-700 pb-2">
+                            <span>☕ Cafe & Chỗ ngồi làm việc tại quán</span>
+                            <span class="font-mono text-gray-400">~500k</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>💻 Phần mềm Edit/Design & Server Web</span>
+                            <span class="font-mono text-gray-400">~1.000k</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-500 italic mt-2">
+                        * Mức này tương đương ~66k/ngày. Vừa đủ để em trang trải chi phí "công cụ lao động" mà không phải bỏ tiền túi ra làm, giúp em yên tâm cống hiến.
+                    </p>
+                </div>
+
+                <!-- Partner Value Card -->
+                <div class="bg-gradient-to-b from-blue-900 to-gray-900 p-6 rounded-xl border border-blue-500 w-full md:w-5/12 transform md:-translate-y-4 shadow-2xl flex flex-col justify-between">
+                    <div>
+                        <p class="text-blue-300 text-sm uppercase tracking-wider mb-2">Giá Trị Anh Nhận Được</p>
+                        <div class="text-3xl font-extrabold text-white mb-4">Hệ Thống & Cam Kết</div>
+                        <ul class="text-left text-sm text-gray-300 space-y-3">
+                            <li class="flex items-start gap-2">
+                                <span class="text-blue-400">✓</span>
+                                <div><strong>Hệ thống 3 kênh:</strong> Fanpage, TikTok, Website vận hành trơn tru.</div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-blue-400">✓</span>
+                                <div><strong>Chất lượng nội dung:</strong> Video/Ảnh chuẩn Pro (nhờ có kinh phí phần mềm).</div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-blue-400">✓</span>
+                                <div><strong>Sự hiện diện:</strong> Có mặt tại quán định kỳ để nắm bắt tình hình thực tế.</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-blue-800 text-center">
+                        <p class="text-sm text-gray-400 mb-2">Chia sẻ lợi nhuận (Upside)</p>
+                        <strong class="text-white block text-lg">Hoa hồng % theo hiệu quả kinh doanh</strong>
+                        <p class="text-xs text-gray-500">(Sẽ bàn sau khi hệ thống chạy ổn định)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <a href="#" class="inline-block bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg">
+                    Đồng Ý Triển Khai Ngay 🚀
+                </a>
+                <p class="mt-4 text-sm text-gray-500">Em làm việc theo tiến độ & hiệu quả (Result-oriented), tận dụng tối đa thời gian ngoài giờ hành chính để không ảnh hưởng đến chi phí vận hành của anh.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-gray-800 bg-gray-900 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-500 text-sm">&copy; 2024 Proposal by Duy (Bác sĩ Web). Passionate about Billiards & Tech.</p>
+        </div>
+    </footer>
+
+    <!-- Visualization & Content Choices:
+         1. Value Chart: Keeps the Market vs Offer comparison.
+         2. Pricing Card Upgrade: Now explicitly breaks down the 2 Million into Gas, Coffee, and Software. This justifies the price hike from 1M to 2M as "Essential Tools" rather than "More Profit".
+         3. Daily Cost Anchor: Mentions "~66k/day" to make the amount seem trivial compared to business revenue.
+    -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('valueChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Chi Phí Thuê Ngoài (Agency/Freelancer)', 'Chi Phí Hợp Tác Với Em (Giai đoạn 1)'],
+                    datasets: [{
+                        label: 'Chi Phí Hàng Tháng (VND)',
+                        data: [22000000, 2000000],
+                        backgroundColor: [
+                            'rgba(239, 68, 68, 0.7)', // Red for Market Price
+                            'rgba(16, 185, 129, 0.9)'  // Emerald for My Offer
+                        ],
+                        borderColor: [
+                            'rgba(239, 68, 68, 1)',
+                            'rgba(16, 185, 129, 1)'
+                        ],
+                        borderWidth: 2,
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) { label += ': '; }
+                                    if (context.parsed.y !== null) {
+                                        label += new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(context.parsed.y);
+                                    }
+                                    return label;
+                                }
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Anh Tiết Kiệm Được: ~20.000.000đ / Tháng',
+                            color: '#e2e8f0',
+                            font: { size: 16, family: 'Montserrat' },
+                            padding: { bottom: 20 }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                            ticks: { color: '#94a3b8', callback: function(value) { return value / 1000000 + ' Tr'; } }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#e2e8f0', font: { weight: 'bold' } }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</body>
+</html>
