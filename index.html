@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tạp Hóa Sang Lũy - Tiện lợi mỗi ngày, ngay gần nhà bạn</title>
+    <title>Tạp Hóa Sang Lũy - Đặt hàng Online</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
@@ -14,16 +14,9 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['"Be Vietnam Pro"', 'sans-serif'],
-                    },
+                    fontFamily: { sans: ['"Be Vietnam Pro"', 'sans-serif'] },
                     colors: {
-                        brand: {
-                            red: '#e11d48',    // Đỏ nổi bật
-                            orange: '#f97316', // Cam thân thiện
-                            yellow: '#fbbf24', // Vàng ấm
-                            green: '#16a34a'   // Xanh tươi
-                        }
+                        brand: { red: '#e11d48', orange: '#f97316', yellow: '#fbbf24', green: '#16a34a', fb: '#0866FF' }
                     }
                 }
             }
@@ -31,39 +24,27 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
+        /* Ẩn hiện các view */
+        .view-section { display: none; animation: fadeIn 0.3s ease-in-out; }
+        .view-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* Hiệu ứng rung cho nút gọi điện */
-        @keyframes ring {
-            0% { transform: rotate(0); }
-            10% { transform: rotate(15deg); }
-            20% { transform: rotate(-15deg); }
-            30% { transform: rotate(15deg); }
-            40% { transform: rotate(-15deg); }
-            50% { transform: rotate(0); }
-            100% { transform: rotate(0); }
-        }
-        .animate-ring { animation: ring 2s infinite ease-in-out; }
+        /* Badge giỏ hàng nảy lên */
+        @keyframes pop { 0% { transform: scale(1); } 50% { transform: scale(1.5); } 100% { transform: scale(1); } }
+        .animate-pop { animation: pop 0.3s ease-in-out; }
 
-        /* Nút Floating Action Button (FAB) */
-        .fab-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 50;
-            display: flex;
-            flex-col;
-            gap: 10px;
-        }
+        /* Nút FB Chat */
+        .fb-chat-btn { position: fixed; bottom: 20px; right: 20px; z-index: 50; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased pb-20 md:pb-0">
 
     <!-- Header / Navbar -->
     <nav class="bg-white shadow-md sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16 sm:h-20">
                 <!-- Logo -->
-                <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="flex items-center gap-2 cursor-pointer" onclick="app.navigate('home')">
                     <div class="w-10 h-10 sm:w-12 sm:h-12 bg-brand-red rounded-full flex items-center justify-center text-white shadow-sm">
                         <i class="fa-solid fa-store text-xl sm:text-2xl"></i>
                     </div>
@@ -75,281 +56,514 @@
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#gioi-thieu" class="text-gray-600 hover:text-brand-red font-medium transition">Giới thiệu</a>
-                    <a href="#mat-hang" class="text-gray-600 hover:text-brand-red font-medium transition">Mặt hàng</a>
-                    <a href="#lien-he" class="text-gray-600 hover:text-brand-red font-medium transition">Liên hệ</a>
-                    <a href="tel:0901234567" class="bg-brand-red text-white px-5 py-2 rounded-full font-bold hover:bg-rose-700 transition flex items-center gap-2 shadow-lg shadow-red-500/30">
-                        <i class="fa-solid fa-phone animate-ring"></i> Đặt giao ngay
-                    </a>
+                    <a href="javascript:void(0)" onclick="app.navigate('home')" class="text-gray-600 hover:text-brand-red font-medium transition">Trang chủ</a>
+                    <a href="javascript:void(0)" onclick="app.navigate('home'); setTimeout(()=>document.getElementById('gioi-thieu').scrollIntoView(), 100);" class="text-gray-600 hover:text-brand-red font-medium transition">Giới thiệu</a>
+                    <a href="javascript:void(0)" onclick="app.navigate('home'); setTimeout(()=>document.getElementById('mat-hang').scrollIntoView(), 100);" class="text-gray-600 hover:text-brand-red font-medium transition">Sản phẩm</a>
+                    
+                    <!-- Giỏ hàng -->
+                    <div class="relative cursor-pointer group" onclick="app.navigate('cart')">
+                        <div class="bg-rose-50 text-brand-red px-4 py-2 rounded-full group-hover:bg-brand-red group-hover:text-white transition flex items-center gap-2 font-bold">
+                            <i class="fa-solid fa-cart-shopping text-lg"></i> Giỏ hàng
+                        </div>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm">0</span>
+                    </div>
                 </div>
 
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-brand-red p-2 focus:outline-none">
-                    <i class="fa-solid fa-bars text-2xl"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg absolute w-full">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#gioi-thieu" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-rose-50 hover:text-brand-red">Giới thiệu</a>
-                <a href="#mat-hang" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-rose-50 hover:text-brand-red">Mặt hàng</a>
-                <a href="#lien-he" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-rose-50 hover:text-brand-red">Liên hệ & Bản đồ</a>
+                <!-- Mobile Cart -->
+                <div class="md:hidden flex items-center gap-4">
+                    <div class="relative cursor-pointer bg-rose-50 p-2.5 rounded-full text-brand-red" onclick="app.navigate('cart')">
+                        <i class="fa-solid fa-cart-shopping text-xl"></i>
+                        <span id="mobile-cart-count" class="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">0</span>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Banner -->
-    <section class="relative bg-brand-red pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-10">
-            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                <defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="2" fill="currentColor"/></pattern></defs>
-                <rect width="100%" height="100%" fill="url(#dots)" />
-            </svg>
-        </div>
+    <!-- ==================== VIEW 1: TRANG CHỦ (HOME) ==================== -->
+    <div id="view-home" class="view-section active">
+        <!-- Hero Banner -->
+        <section class="relative bg-brand-red pt-10 pb-20 lg:pt-16 lg:pb-28 overflow-hidden">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 opacity-10">
+                <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="2" fill="currentColor"/></pattern></defs>
+                    <rect width="100%" height="100%" fill="url(#dots)" />
+                </svg>
+            </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
-            <div class="w-full md:w-1/2 text-center md:text-left text-white">
-                <span class="inline-block py-1 px-3 rounded-full bg-white/20 text-white text-sm font-semibold mb-4 backdrop-blur-sm border border-white/30">
-                    Mở cửa từ 06:00 - 22:00
-                </span>
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-                    Tạp Hóa Sang Lũy <br />
-                    <span class="text-brand-yellow">Cần gì cũng có!</span>
-                </h2>
-                <p class="text-lg md:text-xl text-rose-100 mb-8 max-w-lg mx-auto md:mx-0">
-                    Phục vụ bà con lối xóm với đa dạng mặt hàng thiết yếu, giá cả bình dân. Giao hàng tận cửa nhanh chóng chỉ bằng một cuộc gọi.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <a href="tel:0901234567" class="bg-brand-yellow text-red-900 px-8 py-3.5 rounded-full font-bold text-lg hover:bg-yellow-400 transition shadow-lg flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-phone"></i> Gọi Giao Hàng Ngay
-                    </a>
-                    <a href="#mat-hang" class="bg-white/10 text-white border border-white/30 px-8 py-3.5 rounded-full font-bold text-lg hover:bg-white/20 transition flex items-center justify-center">
-                        Xem Mặt Hàng
-                    </a>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
+                <div class="w-full md:w-1/2 text-center md:text-left text-white">
+                    <span class="inline-block py-1 px-3 rounded-full bg-white/20 text-white text-sm font-semibold mb-4 backdrop-blur-sm border border-white/30">
+                        Mở cửa từ 06:00 - 22:00
+                    </span>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+                        Tạp Hóa Sang Lũy <br />
+                        <span class="text-brand-yellow">Cần gì cũng có!</span>
+                    </h2>
+                    <p class="text-lg md:text-xl text-rose-100 mb-8 max-w-lg mx-auto md:mx-0">Phục vụ bà con lối xóm với đa dạng mặt hàng thiết yếu, giá cả bình dân. Đặt hàng online, chốt đơn qua Zalo/FB, nhận hàng trong 30 phút!</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <button onclick="document.getElementById('mat-hang').scrollIntoView()" class="bg-brand-yellow text-red-900 px-8 py-3.5 rounded-full font-bold text-lg hover:bg-yellow-400 transition shadow-lg flex items-center justify-center gap-2">
+                            Mua Sắm Ngay <i class="fa-solid fa-arrow-down"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hàng hóa" class="rounded-2xl shadow-2xl border-4 border-white transform md:rotate-2 hover:rotate-0 transition duration-300 w-full object-cover h-[250px] md:h-[400px]">
                 </div>
             </div>
+
+            <!-- Curvy bottom -->
+            <div class="absolute bottom-0 w-full overflow-hidden leading-none rotate-180">
+                <svg class="relative block w-full h-[50px] md:h-[80px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-gray-50"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Video Giới Thiệu & Điểm mạnh -->
+        <section id="gioi-thieu" class="py-12 bg-gray-50 relative z-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">Về Tạp Hóa Sang Lũy</h2>
+                    <div class="w-20 h-1.5 bg-brand-red mx-auto rounded-full mb-8"></div>
+                </div>
+
+                <div class="flex flex-col lg:flex-row gap-8 items-center">
+                    <!-- Khu vực Video YouTube -->
+                    <div class="w-full lg:w-1/2">
+                        <!-- Tỷ lệ 16:9 cho video -->
+                        <div class="relative w-full overflow-hidden rounded-2xl shadow-lg border-4 border-white bg-gray-200" style="padding-top: 56.25%;">
+                            <!-- Bạn thay link embed YouTube của bạn vào thẻ src bên dưới -->
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Pj15X7qJ0_M?si=pXvI2v09y_fQyq4M" title="Giới thiệu cửa hàng" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Khu vực Text & Feature -->
+                    <div class="w-full lg:w-1/2 flex flex-col gap-6">
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-start gap-4">
+                            <div class="w-12 h-12 bg-red-100 text-brand-red rounded-full flex items-center justify-center flex-shrink-0 text-xl">
+                                <i class="fa-solid fa-boxes-stacked"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800 mb-1">Đa Dạng Mặt Hàng</h3>
+                                <p class="text-gray-600 text-sm">Từ gạo, gia vị đến bánh kẹo, hóa mỹ phẩm. Hàng mới nhập liên tục mỗi ngày, đáp ứng mọi nhu cầu.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-start gap-4">
+                            <div class="w-12 h-12 bg-green-100 text-brand-green rounded-full flex items-center justify-center flex-shrink-0 text-xl">
+                                <i class="fa-solid fa-motorcycle"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800 mb-1">Giao Hàng Tận Nơi</h3>
+                                <p class="text-gray-600 text-sm">Chỉ cần đặt hàng trên web, gọi điện hoặc nhắn Zalo. Cửa hàng sẽ soạn sẵn và giao tận nhà cho bà con thật nhanh chóng.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-start gap-4">
+                            <div class="w-12 h-12 bg-yellow-100 text-brand-orange rounded-full flex items-center justify-center flex-shrink-0 text-xl">
+                                <i class="fa-solid fa-hand-holding-dollar"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800 mb-1">Giá Cả Bình Dân</h3>
+                                <p class="text-gray-600 text-sm">Cam kết bán đúng giá, giá bình dân như ở chợ. Cân đúng, bán đủ, uy tín làm nên thương hiệu lâu năm.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Grid với Phân loại Danh mục -->
+        <section id="mat-hang" class="py-12 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-2">Sản Phẩm Cửa Hàng</h2>
+                    <div class="w-16 h-1.5 bg-brand-red mx-auto rounded-full"></div>
+                </div>
+
+                <!-- Thanh Phân Loại (Tabs) -->
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-10" id="category-filters">
+                    <!-- Chèn bằng JS -->
+                </div>
+
+                <!-- Container chứa sản phẩm (Render bằng JS) -->
+                <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                    <!-- Products will be injected here -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== VIEW 2: CHI TIẾT SẢN PHẨM ==================== -->
+    <div id="view-detail" class="view-section bg-white min-h-screen py-8">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <button onclick="app.navigate('home')" class="text-gray-500 hover:text-brand-red font-medium mb-6 flex items-center transition">
+                <i class="fa-solid fa-arrow-left mr-2"></i> Quay lại cửa hàng
+            </button>
             
-            <div class="w-full md:w-1/2">
-                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hàng hóa đa dạng" class="rounded-2xl shadow-2xl border-4 border-white transform md:rotate-2 hover:rotate-0 transition duration-300 w-full object-cover h-[300px] md:h-[400px]">
+            <div id="detail-content" class="flex flex-col md:flex-row gap-8 lg:gap-12">
+                <!-- Content injected by JS -->
             </div>
         </div>
-        
-        <!-- Curvy bottom -->
-        <div class="absolute bottom-0 w-full overflow-hidden leading-none rotate-180">
-            <svg class="relative block w-full h-[50px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-gray-50"></path>
-            </svg>
-        </div>
-    </section>
+    </div>
 
-    <!-- Tại sao chọn Sang Lũy? -->
-    <section id="gioi-thieu" class="py-16 md:py-20 relative z-20 -mt-10 md:-mt-20">
+    <!-- ==================== VIEW 3: GIỎ HÀNG & THANH TOÁN ==================== -->
+    <div id="view-cart" class="view-section bg-gray-50 min-h-screen py-8">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <i class="fa-solid fa-cart-shopping text-brand-red mr-3"></i> Giỏ Hàng Của Bạn
+            </h2>
+
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Danh sách món hàng -->
+                <div class="lg:w-2/3 bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                    <div id="cart-items" class="space-y-4">
+                        <!-- Cart items injected by JS -->
+                    </div>
+                </div>
+
+                <!-- Form thông tin & Chốt đơn FB -->
+                <div class="lg:w-1/3">
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sticky top-24">
+                        <h3 class="font-bold text-lg mb-4 border-b pb-2">Thông tin nhận hàng</h3>
+                        <div class="space-y-4 mb-6">
+                            <div>
+                                <label class="block text-sm text-gray-600 mb-1">Tên của bạn *</label>
+                                <input type="text" id="customer-name" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-brand-red" placeholder="VD: Cô Năm">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-600 mb-1">Số điện thoại *</label>
+                                <input type="tel" id="customer-phone" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-brand-red" placeholder="090...">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-600 mb-1">Địa chỉ giao hàng *</label>
+                                <textarea id="customer-address" rows="2" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-brand-red" placeholder="Số nhà, hẻm, đường..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="border-t pt-4 mb-6">
+                            <div class="flex justify-between font-bold text-lg">
+                                <span>Tổng tiền:</span>
+                                <span id="cart-total-price" class="text-brand-red">0đ</span>
+                            </div>
+                        </div>
+
+                        <!-- Buttons Chốt Đơn qua Mạng Xã Hội -->
+                        <div class="space-y-3">
+                            <button onclick="app.checkout('facebook')" class="w-full bg-brand-fb text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-blue-700 transition shadow-md">
+                                <i class="fa-brands fa-facebook-messenger text-xl"></i> Gửi đơn qua Messenger
+                            </button>
+                            <button onclick="app.checkout('zalo')" class="w-full bg-blue-500 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-blue-600 transition shadow-md">
+                                <i class="fa-solid fa-comment-dots text-xl"></i> Gửi đơn qua Zalo
+                            </button>
+                            <p class="text-[11px] text-gray-500 text-center mt-2">Đơn hàng sẽ được chuyển thành tin nhắn gửi trực tiếp cho chủ tiệm.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8 border-t-4 border-brand-red mt-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Feature 1 -->
-                <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-100 text-center hover:-translate-y-2 transition duration-300">
-                    <div class="w-16 h-16 bg-red-100 text-brand-red rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
-                        <i class="fa-solid fa-boxes-stacked"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Đa Dạng Mặt Hàng</h3>
-                    <p class="text-gray-600">Từ gạo, mắm muối, gia vị đến bánh kẹo, đồ uống, hóa mỹ phẩm. Hàng mới nhập liên tục mỗi ngày.</p>
-                </div>
-                <!-- Feature 2 -->
-                <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-100 text-center hover:-translate-y-2 transition duration-300">
-                    <div class="w-16 h-16 bg-green-100 text-brand-green rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
-                        <i class="fa-solid fa-motorcycle"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Giao Hàng Quanh Khu Vực</h3>
-                    <p class="text-gray-600">Chỉ cần nhắn Zalo hoặc gọi điện, cửa hàng soạn sẵn và giao tận nhà cho bà con thật nhanh chóng.</p>
-                </div>
-                <!-- Feature 3 -->
-                <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-100 text-center hover:-translate-y-2 transition duration-300">
-                    <div class="w-16 h-16 bg-yellow-100 text-brand-orange rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
-                        <i class="fa-solid fa-hand-holding-dollar"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Giá Cả Bình Dân</h3>
-                    <p class="text-gray-600">Cam kết bán đúng giá, giá bình dân như ở chợ. Cân đúng, bán đủ, uy tín làm nên thương hiệu.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Các mặt hàng chính -->
-    <section id="mat-hang" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">Các Mặt Hàng Tại Cửa Hàng</h2>
-                <div class="w-20 h-1.5 bg-brand-red mx-auto rounded-full"></div>
-                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Tạp hóa Sang Lũy cung cấp đầy đủ các nhu yếu phẩm hàng ngày cho gia đình bạn.</p>
-            </div>
-
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                <!-- Danh mục 1 -->
-                <div class="bg-rose-50 rounded-xl overflow-hidden group cursor-pointer border border-rose-100">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1588614959060-4d144f28b207?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Gia vị & Lương thực" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <div class="absolute inset-0 bg-black/20"></div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-bold text-gray-800 text-lg mb-1">Gia Vị & Lương Thực</h3>
-                        <p class="text-xs text-gray-500">Gạo, mắm, muối, dầu ăn, mì tôm...</p>
-                    </div>
-                </div>
-
-                <!-- Danh mục 2 -->
-                <div class="bg-blue-50 rounded-xl overflow-hidden group cursor-pointer border border-blue-100">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Đồ uống & Giải khát" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <div class="absolute inset-0 bg-black/20"></div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-bold text-gray-800 text-lg mb-1">Đồ Uống & Nước Giải Khát</h3>
-                        <p class="text-xs text-gray-500">Bia, nước ngọt, trà, nước suối...</p>
-                    </div>
-                </div>
-
-                <!-- Danh mục 3 -->
-                <div class="bg-yellow-50 rounded-xl overflow-hidden group cursor-pointer border border-yellow-100">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Bánh kẹo & Ăn vặt" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <div class="absolute inset-0 bg-black/20"></div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-bold text-gray-800 text-lg mb-1">Bánh Kẹo & Ăn Vặt</h3>
-                        <p class="text-xs text-gray-500">Snack, sữa tươi, bánh ngọt...</p>
-                    </div>
-                </div>
-
-                <!-- Danh mục 4 -->
-                <div class="bg-green-50 rounded-xl overflow-hidden group cursor-pointer border border-green-100">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1584824486516-0555a07fc511?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Hóa Mỹ Phẩm" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <div class="absolute inset-0 bg-black/20"></div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-bold text-gray-800 text-lg mb-1">Đồ Dùng & Hóa Mỹ Phẩm</h3>
-                        <p class="text-xs text-gray-500">Bột giặt, dầu gội, giấy vệ sinh...</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Banner Kêu gọi nhỏ -->
-            <div class="mt-12 bg-gradient-to-r from-brand-red to-rose-600 rounded-2xl p-6 sm:p-10 text-center text-white shadow-xl">
-                <h3 class="text-2xl sm:text-3xl font-bold mb-4">Bạn đang cần mua gì?</h3>
-                <p class="mb-6 opacity-90 max-w-xl mx-auto">Chỉ cần nhắn tin Zalo danh sách đồ cần mua, Sang Lũy sẽ nhặt sẵn đồ và báo giá cho bạn ngay lập tức!</p>
-                <a href="https://zalo.me/0901234567" target="_blank" class="inline-block bg-white text-brand-red px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow">
-                    <i class="fa-solid fa-comment-dots mr-2"></i> Nhắn tin Zalo
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer / Liên hệ -->
-    <footer id="lien-he" class="bg-gray-900 text-white pt-16 pb-8 border-t-4 border-brand-red">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
-                <!-- Thông tin cửa hàng -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
                 <div>
                     <div class="flex items-center gap-2 mb-6">
-                        <div class="w-10 h-10 bg-brand-red rounded-full flex items-center justify-center text-white">
-                            <i class="fa-solid fa-store text-xl"></i>
-                        </div>
+                        <div class="w-10 h-10 bg-brand-red rounded-full flex items-center justify-center text-white"><i class="fa-solid fa-store text-xl"></i></div>
                         <h2 class="font-extrabold text-2xl tracking-tight text-white">SANG LŨY</h2>
                     </div>
-                    <p class="text-gray-400 mb-6 leading-relaxed">
-                        Tạp hóa Sang Lũy - Nơi mua sắm thân thuộc, tiện lợi và uy tín của bà con khu vực. Cảm ơn quý khách đã luôn tin tưởng và ủng hộ cửa hàng.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-red transition"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-red transition"><i class="fa-solid fa-comment"></i></a>
-                    </div>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Tạp hóa Sang Lũy - Nơi mua sắm thân thuộc, tiện lợi và uy tín của bà con khu vực.</p>
                 </div>
-
-                <!-- Liên hệ -->
                 <div>
                     <h3 class="text-xl font-bold mb-6 text-brand-yellow">Thông Tin Liên Hệ</h3>
                     <ul class="space-y-4 text-gray-300">
-                        <li class="flex items-start">
-                            <i class="fa-solid fa-location-dot mt-1 mr-3 text-brand-red text-lg w-5 text-center"></i> 
-                            <span>Số 123 Đường X, Phường Y, Quận Z, TP. HCM (Kế bên cây xăng)</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fa-solid fa-phone mr-3 text-brand-red text-lg w-5 text-center"></i> 
-                            <a href="tel:0901234567" class="hover:text-white text-lg font-bold">090 123 4567 (Cô Sang)</a>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fa-solid fa-clock mr-3 text-brand-red text-lg w-5 text-center"></i> 
-                            <span>Mở cửa: 06:00 Sáng - 22:00 Tối</span>
-                        </li>
+                        <li class="flex items-start"><i class="fa-solid fa-location-dot mt-1 mr-3 text-brand-red text-lg w-5 text-center"></i> <span>Số 123 Đường X, Phường Y, Quận Z, TP. HCM</span></li>
+                        <li class="flex items-center"><i class="fa-solid fa-phone mr-3 text-brand-red text-lg w-5 text-center"></i> <a href="tel:0901234567" class="hover:text-white font-bold">090 123 4567 (Cô Sang)</a></li>
                     </ul>
                 </div>
-
-                <!-- Bản đồ (Giả lập) -->
-                <div class="bg-gray-800 rounded-xl p-2 h-48 sm:h-auto overflow-hidden flex items-center justify-center relative group cursor-pointer border border-gray-700">
-                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Bản đồ" class="w-full h-full object-cover opacity-50 group-hover:opacity-30 transition">
-                    <div class="absolute text-center">
-                        <i class="fa-solid fa-map-location-dot text-4xl text-brand-red mb-2"></i>
-                        <p class="font-bold">Xem trên Google Maps</p>
-                    </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-brand-yellow">Mở Cửa</h3>
+                    <p class="text-gray-300 mb-2"><i class="fa-solid fa-clock mr-2 text-brand-red"></i> Thứ 2 - Chủ Nhật</p>
+                    <p class="text-gray-300 text-lg font-bold">06:00 Sáng - 22:00 Tối</p>
                 </div>
             </div>
-            
             <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
                 <p>&copy; 2026 Tạp Hóa Sang Lũy. Phục vụ bằng sự tận tâm.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Nút Gọi/Zalo nổi (Floating Action Buttons) -->
-    <div class="fab-container flex flex-col gap-3">
-        <!-- Nút Zalo -->
-        <a href="https://zalo.me/0901234567" target="_blank" class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition duration-300 relative group">
-            <span class="font-bold text-xs absolute w-full text-center">Zalo</span>
-            <!-- Tooltip -->
-            <span class="absolute right-14 bg-gray-900 text-white px-2 py-1 rounded text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">Nhắn Zalo</span>
-        </a>
-        <!-- Nút Gọi điện -->
-        <a href="tel:0901234567" class="w-14 h-14 bg-brand-red rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition duration-300 relative group animate-ring">
-            <i class="fa-solid fa-phone text-xl"></i>
-            <!-- Tooltip -->
-            <span class="absolute right-16 bg-brand-red text-white px-3 py-1.5 rounded-lg text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none shadow-md">
-                Gọi giao hàng
-                <!-- Mũi tên tooltip -->
-                <div class="absolute top-1/2 -right-1 w-2 h-2 bg-brand-red transform -translate-y-1/2 rotate-45"></div>
-            </span>
-        </a>
+    <!-- Toast Thông báo -->
+    <div id="toast" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-6 py-3 rounded-full shadow-xl z-50 transition-all duration-300 opacity-0 translate-y-10 pointer-events-none flex items-center gap-2">
+        <i class="fa-solid fa-circle-check text-green-400"></i> <span id="toast-msg">Thêm thành công</span>
     </div>
 
-    <!-- JavaScript Xử lý Menu Mobile -->
+    <!-- CẤU TRÚC JAVASCRIPT (ĐÓNG VAI TRÒ NHƯ REACT/VUE) -->
     <script>
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
+        // 1. DATABASE (Dữ liệu sản phẩm giả lập)
+        const dbProducts = [
+            { id: 1, name: 'Gạo ST25 Lúa Tôm (Bao 5kg)', price: 185000, img: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', desc: 'Gạo dẻo, thơm lừng. Chính hãng chú Hồ Quang Cua.', category: 'Lương thực' },
+            { id: 2, name: 'Thùng Mì Hảo Hảo Chua Cay', price: 115000, img: 'https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', desc: 'Thùng 30 gói, mì quốc dân. Hàng date mới liên tục.', category: 'Đồ ăn nhanh' },
+            { id: 3, name: 'Dầu Ăn Tường An 1 Lít', price: 48000, img: 'https://images.unsplash.com/photo-1628190986701-d8ec1bdf4e56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', desc: 'Dầu thực vật an toàn cho sức khỏe gia đình.', category: 'Gia vị' },
+            { id: 4, name: 'Nước Mắm Nam Ngư Đệ Nhị', price: 32000, img: 'https://images.unsplash.com/photo-1596639739561-1c390a786016?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', desc: 'Chai lớn 900ml, đậm đà hương vị truyền thống.', category: 'Gia vị' },
+            { id: 5, name: 'Thùng Bia Tiger Bạc', price: 380000, img: 'https://images.unsplash.com/photo-1600217032731-15b63d917f8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', desc: 'Bia Tiger Crystal ướp lạnh sẵn, thùng 24 lon.', category: 'Đồ uống' },
+            { id: 6, name: 'Nước Giặt OMO Matic (Túi 3.1kg)', price: 165000, img: 'https://images.unsplash.com/photo-1584824486516-0555a07fc511?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', desc: 'Dùng cho máy giặt cửa trên, khử mùi hôi hiệu quả.', category: 'Hóa phẩm' },
+            { id: 7, name: 'Sữa Tươi Vinamilk 100% (Lốc 4 hộp)', price: 32000, img: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', desc: 'Sữa tươi nguyên chất, bổ sung dinh dưỡng.', category: 'Đồ uống' },
+            { id: 8, name: 'Nước Mắm Barona (Chai 500ml)', price: 25000, img: 'https://images.unsplash.com/photo-1614088825827-0b19cf629bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', desc: 'Nước mắm cá cơm nguyên chất Barona.', category: 'Gia vị' }
+        ];
 
-        // Toggle menu khi bấm nút
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
+        // 2. STATE MANAGEMENT (Quản lý trạng thái App)
+        const app = {
+            cart: [],
+            currentView: 'home',
+            activeCategory: 'Tất cả',
+            
+            // Hàm chuyển trang
+            navigate: function(viewId, param = null) {
+                // Ẩn tất cả views
+                document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+                // Hiện view được chọn
+                document.getElementById('view-' + viewId).classList.add('active');
+                window.scrollTo(0,0);
 
-        // Tự động đóng menu khi bấm vào link
-        const links = menu.querySelectorAll('a');
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-            });
-        });
+                if(viewId === 'home') {
+                    this.renderCategories();
+                    this.renderHome();
+                }
+                if(viewId === 'detail' && param) this.renderDetail(param);
+                if(viewId === 'cart') this.renderCart();
+            },
 
-        // Thay đổi shadow navbar khi cuộn
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 10) {
-                nav.classList.add('shadow-lg');
-            } else {
-                nav.classList.remove('shadow-lg');
+            // Format tiền tệ VNĐ
+            formatPrice: (price) => new Intl.NumberFormat('vi-VN').format(price) + 'đ',
+
+            // Hiển thị thông báo (Toast)
+            showToast: function(msg) {
+                const toast = document.getElementById('toast');
+                document.getElementById('toast-msg').innerText = msg;
+                toast.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                setTimeout(() => toast.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none'), 2500);
+            },
+
+            // RENDER: Bộ lọc Danh mục
+            renderCategories: function() {
+                // Lấy ra các danh mục duy nhất từ db
+                const categories = ['Tất cả', ...new Set(dbProducts.map(p => p.category))];
+                const container = document.getElementById('category-filters');
+                container.innerHTML = categories.map(cat => `
+                    <button onclick="app.filterCategory('${cat}')" class="px-5 py-2 rounded-full text-sm font-semibold transition border ${this.activeCategory === cat ? 'bg-brand-red text-white border-brand-red shadow-md' : 'bg-white text-gray-600 border-gray-200 hover:border-brand-red hover:text-brand-red'}">
+                        ${cat}
+                    </button>
+                `).join('');
+            },
+
+            // Xử lý khi click vào nút Danh mục
+            filterCategory: function(cat) {
+                this.activeCategory = cat;
+                this.renderCategories();
+                this.renderHome();
+            },
+
+            // RENDER: Trang Chủ (Danh sách sản phẩm)
+            renderHome: function() {
+                const grid = document.getElementById('product-grid');
+                
+                // Lọc sản phẩm theo Category hiện tại
+                const filteredProducts = this.activeCategory === 'Tất cả' 
+                    ? dbProducts 
+                    : dbProducts.filter(p => p.category === this.activeCategory);
+
+                if (filteredProducts.length === 0) {
+                    grid.innerHTML = `<div class="col-span-full text-center py-10 text-gray-500">Đang cập nhật mặt hàng này...</div>`;
+                    return;
+                }
+
+                grid.innerHTML = filteredProducts.map(p => `
+                    <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col h-full cursor-pointer" onclick="app.navigate('detail', ${p.id})">
+                        <div class="relative aspect-square overflow-hidden rounded-t-xl bg-gray-100">
+                            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                        </div>
+                        <div class="p-3 md:p-4 flex flex-col flex-grow">
+                            <p class="text-[10px] text-gray-500 mb-1 uppercase">${p.category}</p>
+                            <h3 class="font-bold text-gray-800 text-sm md:text-base mb-2 line-clamp-2">${p.name}</h3>
+                            <div class="mt-auto flex justify-between items-center">
+                                <span class="text-brand-red font-bold text-lg">${this.formatPrice(p.price)}</span>
+                                <button onclick="event.stopPropagation(); app.addToCart(${p.id})" class="bg-rose-100 text-brand-red w-8 h-8 rounded-full flex items-center justify-center hover:bg-brand-red hover:text-white transition">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            },
+
+            // RENDER: Trang Chi tiết Sản phẩm
+            renderDetail: function(productId) {
+                const p = dbProducts.find(item => item.id === productId);
+                if(!p) return;
+                
+                // Nút chia sẻ Facebook chuẩn
+                const currentUrl = encodeURIComponent(window.location.href);
+                const fbShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
+
+                const container = document.getElementById('detail-content');
+                container.innerHTML = `
+                    <div class="w-full md:w-1/2">
+                        <img src="${p.img}" alt="${p.name}" class="w-full rounded-2xl shadow-sm object-cover aspect-square">
+                    </div>
+                    <div class="w-full md:w-1/2 flex flex-col">
+                        <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full w-max mb-3">${p.category}</span>
+                        <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-3">${p.name}</h1>
+                        <p class="text-3xl font-bold text-brand-red mb-6">${this.formatPrice(p.price)}</p>
+                        <div class="prose text-gray-600 mb-8 border-t border-b py-4">
+                            <p>${p.desc}</p>
+                            <ul class="list-disc pl-5 mt-2 text-sm">
+                                <li>Cam kết hàng chính hãng, date mới.</li>
+                                <li>Giao hàng tận nơi trong khu vực.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="flex gap-4 mb-6">
+                            <button onclick="app.addToCart(${p.id}, true)" class="flex-1 bg-brand-red text-white py-4 rounded-xl font-bold text-lg hover:bg-rose-700 transition shadow-lg flex justify-center items-center gap-2">
+                                <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                        
+                        <div class="mt-auto">
+                            <p class="text-sm font-medium text-gray-500 mb-2">Chia sẻ cho người thân:</p>
+                            <a href="${fbShareUrl}" target="_blank" class="inline-flex items-center gap-2 bg-gray-100 hover:bg-brand-fb hover:text-white text-gray-700 px-4 py-2 rounded-lg transition font-medium text-sm">
+                                <i class="fa-brands fa-facebook"></i> Chia sẻ Facebook
+                            </a>
+                        </div>
+                    </div>
+                `;
+            },
+
+            // LOGIC: Thêm vào giỏ
+            addToCart: function(productId, goCart = false) {
+                const product = dbProducts.find(p => p.id === productId);
+                const existingItem = this.cart.find(item => item.id === productId);
+                
+                if(existingItem) {
+                    existingItem.qty += 1;
+                } else {
+                    this.cart.push({ ...product, qty: 1 });
+                }
+                
+                this.updateCartUI();
+                if(goCart) this.navigate('cart');
+                else this.showToast('Đã thêm ' + product.name);
+            },
+
+            // LOGIC: Thay đổi số lượng
+            changeQty: function(index, delta) {
+                this.cart[index].qty += delta;
+                if(this.cart[index].qty <= 0) this.cart.splice(index, 1);
+                this.updateCartUI();
+                this.renderCart();
+            },
+
+            // Cập nhật Badge số lượng Giỏ hàng
+            updateCartUI: function() {
+                const totalItems = this.cart.reduce((sum, item) => sum + item.qty, 0);
+                document.getElementById('cart-count').innerText = totalItems;
+                document.getElementById('mobile-cart-count').innerText = totalItems;
+                
+                // Hiệu ứng nảy
+                const badges = [document.getElementById('cart-count'), document.getElementById('mobile-cart-count')];
+                badges.forEach(b => {
+                    b.classList.remove('animate-pop');
+                    void b.offsetWidth; // trigger reflow
+                    b.classList.add('animate-pop');
+                });
+            },
+
+            // RENDER: Trang Giỏ hàng
+            renderCart: function() {
+                const container = document.getElementById('cart-items');
+                if(this.cart.length === 0) {
+                    container.innerHTML = `<div class="text-center py-10"><i class="fa-solid fa-basket-shopping text-4xl text-gray-300 mb-3"></i><p class="text-gray-500">Giỏ hàng trống</p><button onclick="app.navigate('home')" class="mt-4 text-brand-red font-bold">Tiếp tục mua sắm</button></div>`;
+                    document.getElementById('cart-total-price').innerText = '0đ';
+                    return;
+                }
+
+                let total = 0;
+                container.innerHTML = this.cart.map((item, index) => {
+                    total += item.price * item.qty;
+                    return `
+                    <div class="flex items-center gap-4 py-3 border-b last:border-0">
+                        <img src="${item.img}" class="w-16 h-16 object-cover rounded-lg border">
+                        <div class="flex-1">
+                            <h4 class="font-bold text-gray-800 text-sm line-clamp-1">${item.name}</h4>
+                            <div class="text-brand-red font-semibold text-sm">${this.formatPrice(item.price)}</div>
+                        </div>
+                        <div class="flex items-center bg-gray-100 rounded-lg border">
+                            <button onclick="app.changeQty(${index}, -1)" class="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-brand-red">-</button>
+                            <span class="w-6 text-center text-sm font-bold">${item.qty}</span>
+                            <button onclick="app.changeQty(${index}, 1)" class="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-brand-red">+</button>
+                        </div>
+                    </div>
+                `}).join('');
+                document.getElementById('cart-total-price').innerText = this.formatPrice(total);
+            },
+
+            // LOGIC: CHỐT ĐƠN & GỬI QUA FACEBOOK / ZALO (ĐÃ FIX LỖI CLIPBOARD)
+            checkout: function(platform) {
+                if(this.cart.length === 0) return alert('Giỏ hàng trống!');
+                
+                const name = document.getElementById('customer-name').value;
+                const phone = document.getElementById('customer-phone').value;
+                const address = document.getElementById('customer-address').value;
+
+                if(!name || !phone || !address) return alert('Vui lòng điền đủ Tên, SĐT và Địa chỉ!');
+
+                let total = 0;
+                let orderText = `🛒 ĐƠN HÀNG MỚI TỪ WEBSITE\n`;
+                orderText += `--------------------------\n`;
+                orderText += `👤 Tên: ${name}\n`;
+                orderText += `📞 SĐT: ${phone}\n`;
+                orderText += `📍 Địa chỉ: ${address}\n`;
+                orderText += `--------------------------\n`;
+                this.cart.forEach((item, i) => {
+                    orderText += `${i+1}. ${item.name} (x${item.qty})\n`;
+                    total += item.price * item.qty;
+                });
+                orderText += `--------------------------\n`;
+                orderText += `💰 TỔNG CỘNG: ${this.formatPrice(total)}`;
+
+                const encodedText = encodeURIComponent(orderText);
+
+                if(platform === 'facebook') {
+                    // FIX: Dùng Clipboard copy nội dung đơn hàng để khách dán vào Messenger
+                    navigator.clipboard.writeText(orderText).then(() => {
+                        alert("Đã copy đơn hàng! Trình duyệt sẽ mở Facebook Messenger, bạn vui lòng nhấn DÁN (Paste) vào khung chat để gửi đơn cho Tiệm nhé.");
+                        // Thay 'your_fanpage_id_here' bằng Username của Fanpage
+                        const fbUrl = `https://m.me/your_fanpage_id_here`;
+                        window.open(fbUrl, '_blank');
+                        
+                        this.cart = [];
+                        this.updateCartUI();
+                        this.navigate('home');
+                    }).catch(err => {
+                        alert("Trình duyệt không hỗ trợ copy tự động. Vui lòng chọn gửi qua Zalo nhé!");
+                    });
+                } else if (platform === 'zalo') {
+                    // Zalo hỗ trợ truyền text trực tiếp
+                    const zaloUrl = `https://zalo.me/0901234567?text=${encodedText}`;
+                    window.open(zaloUrl, '_blank');
+                    
+                    this.cart = [];
+                    this.updateCartUI();
+                    this.navigate('home');
+                }
             }
-        });
+        };
+
+        // Khởi tạo App
+        window.onload = () => {
+            app.navigate('home');
+        };
     </script>
 </body>
 </html>
