@@ -146,8 +146,8 @@
                                 <i class="fa-solid fa-boxes-stacked"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg font-bold text-gray-800 mb-1">Đa Dạng Mặt Hàng</h3>
-                                <p class="text-gray-600 text-sm">Từ gạo, gia vị đến bánh kẹo, hóa mỹ phẩm. Hàng mới nhập liên tục mỗi ngày, đáp ứng mọi nhu cầu.</p>
+                                <h3 class="text-lg font-bold text-gray-800 mb-1">Hàng Ngàn Mặt Hàng</h3>
+                                <p class="text-gray-600 text-sm">Chỉ đăng vài món đại diện, nhưng tiệm có đủ mọi thứ từ A-Z. Cứ nhắn tin là tiệm lấy đủ cho bạn!</p>
                             </div>
                         </div>
                         <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-start gap-4">
@@ -177,8 +177,16 @@
         <section id="mat-hang" class="py-12 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-8">
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-2">Sản Phẩm Cửa Hàng</h2>
-                    <div class="w-16 h-1.5 bg-brand-red mx-auto rounded-full"></div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-2">Sản Phẩm Đại Diện</h2>
+                    <div class="w-16 h-1.5 bg-brand-red mx-auto rounded-full mb-6"></div>
+                    
+                    <!-- THANH TÌM KIẾM SẢN PHẨM -->
+                    <div class="max-w-xl mx-auto relative mb-8">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
+                        </div>
+                        <input type="text" id="search-input" onkeyup="app.searchProduct(this.value)" placeholder="Tìm món bạn cần (VD: Gạo, Mắm, Bia...)" class="w-full pl-12 pr-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red shadow-sm transition text-gray-700">
+                    </div>
                 </div>
 
                 <!-- Thanh Phân Loại (Tabs) -->
@@ -236,8 +244,8 @@
                                 <input type="tel" id="customer-phone" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-brand-red" placeholder="090...">
                             </div>
                             <div>
-                                <label class="block text-sm text-gray-600 mb-1">Địa chỉ giao hàng *</label>
-                                <textarea id="customer-address" rows="2" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-brand-red" placeholder="Số nhà, hẻm, đường..."></textarea>
+                                <label class="block text-sm text-gray-600 mb-1">Địa chỉ giao hàng & Lời nhắn *</label>
+                                <textarea id="customer-address" rows="3" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-brand-red" placeholder="Số nhà... Lấy thêm cho cô 2 bó rau muống nhé!"></textarea>
                             </div>
                         </div>
 
@@ -318,6 +326,7 @@
             cart: [],
             currentView: 'home',
             activeCategory: 'Tất cả',
+            searchKeyword: '', // Thêm trạng thái tìm kiếm
             
             // Hàm chuyển trang
             navigate: function(viewId, param = null) {
@@ -365,37 +374,63 @@
                 this.renderHome();
             },
 
+            // Xử lý tìm kiếm
+            searchProduct: function(keyword) {
+                this.searchKeyword = keyword.toLowerCase().trim();
+                this.renderHome();
+            },
+
             // RENDER: Trang Chủ (Danh sách sản phẩm)
             renderHome: function() {
                 const grid = document.getElementById('product-grid');
                 
-                // Lọc sản phẩm theo Category hiện tại
-                const filteredProducts = this.activeCategory === 'Tất cả' 
-                    ? dbProducts 
-                    : dbProducts.filter(p => p.category === this.activeCategory);
-
-                if (filteredProducts.length === 0) {
-                    grid.innerHTML = `<div class="col-span-full text-center py-10 text-gray-500">Đang cập nhật mặt hàng này...</div>`;
-                    return;
+                // Lọc sản phẩm theo Category VÀ theo Search Keyword
+                let filteredProducts = dbProducts;
+                
+                if (this.activeCategory !== 'Tất cả') {
+                    filteredProducts = filteredProducts.filter(p => p.category === this.activeCategory);
+                }
+                
+                if (this.searchKeyword !== '') {
+                    filteredProducts = filteredProducts.filter(p => 
+                        p.name.toLowerCase().includes(this.searchKeyword) || 
+                        p.category.toLowerCase().includes(this.searchKeyword)
+                    );
                 }
 
-                grid.innerHTML = filteredProducts.map(p => `
-                    <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col h-full cursor-pointer" onclick="app.navigate('detail', ${p.id})">
-                        <div class="relative aspect-square overflow-hidden rounded-t-xl bg-gray-100">
-                            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition duration-300">
-                        </div>
-                        <div class="p-3 md:p-4 flex flex-col flex-grow">
-                            <p class="text-[10px] text-gray-500 mb-1 uppercase">${p.category}</p>
-                            <h3 class="font-bold text-gray-800 text-sm md:text-base mb-2 line-clamp-2">${p.name}</h3>
-                            <div class="mt-auto flex justify-between items-center">
-                                <span class="text-brand-red font-bold text-lg">${this.formatPrice(p.price)}</span>
-                                <button onclick="event.stopPropagation(); app.addToCart(${p.id})" class="bg-rose-100 text-brand-red w-8 h-8 rounded-full flex items-center justify-center hover:bg-brand-red hover:text-white transition">
-                                    <i class="fa-solid fa-plus"></i>
-                                </button>
+                if (filteredProducts.length === 0) {
+                    grid.innerHTML = `<div class="col-span-full text-center py-10 text-gray-500">Không tìm thấy món bạn cần? Đừng lo, nhắn tin ngay để tiệm lấy cho bạn nhé!</div>`;
+                } else {
+                    grid.innerHTML = filteredProducts.map(p => `
+                        <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col h-full cursor-pointer" onclick="app.navigate('detail', ${p.id})">
+                            <div class="relative aspect-square overflow-hidden rounded-t-xl bg-gray-100">
+                                <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                            </div>
+                            <div class="p-3 md:p-4 flex flex-col flex-grow">
+                                <p class="text-[10px] text-gray-500 mb-1 uppercase">${p.category}</p>
+                                <h3 class="font-bold text-gray-800 text-sm md:text-base mb-2 line-clamp-2">${p.name}</h3>
+                                <div class="mt-auto flex justify-between items-center">
+                                    <span class="text-brand-red font-bold text-lg">${this.formatPrice(p.price)}</span>
+                                    <button onclick="event.stopPropagation(); app.addToCart(${p.id})" class="bg-rose-100 text-brand-red w-8 h-8 rounded-full flex items-center justify-center hover:bg-brand-red hover:text-white transition">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
+                    `).join('');
+                }
+
+                // THÊM THẺ CALL TO ACTION Ở CUỐI DANH SÁCH (Dù có lọc hay không)
+                grid.innerHTML += `
+                    <div class="bg-rose-50 rounded-xl shadow-sm transition border-2 border-dashed border-rose-300 flex flex-col items-center justify-center h-full p-4 text-center cursor-pointer hover:bg-rose-100" onclick="window.open('https://zalo.me/0901234567', '_blank')">
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-red text-xl mb-3 shadow-sm">
+                            <i class="fa-solid fa-box-open"></i>
+                        </div>
+                        <h3 class="font-bold text-brand-red text-sm md:text-base mb-2">Món khác?</h3>
+                        <p class="text-xs text-gray-600 mb-4">Tiệm còn hàng ngàn món khác chưa đăng lên web. Nhấn để nhắn Zalo lấy thêm!</p>
+                        <span class="bg-brand-red text-white text-xs font-bold px-4 py-2 rounded-full">Nhắn tiệm ngay</span>
                     </div>
-                `).join('');
+                `;
             },
 
             // RENDER: Trang Chi tiết Sản phẩm
@@ -523,7 +558,7 @@
                 orderText += `--------------------------\n`;
                 orderText += `👤 Tên: ${name}\n`;
                 orderText += `📞 SĐT: ${phone}\n`;
-                orderText += `📍 Địa chỉ: ${address}\n`;
+                orderText += `📍 Địa chỉ & Lời nhắn: ${address}\n`;
                 orderText += `--------------------------\n`;
                 this.cart.forEach((item, i) => {
                     orderText += `${i+1}. ${item.name} (x${item.qty})\n`;
