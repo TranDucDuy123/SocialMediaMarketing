@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- TỐI ƯU SEO CƠ BẢN -->
     <title>Tạp Hóa Sang Lũy - Hải Sản Tươi & Siêu Thị Mini Lâm Đồng</title>
     <meta name="description" content="Tạp hóa Sang Lũy chuyên cung cấp hải sản tươi sống từ biển lên cao nguyên và gạo, gia vị, nhu yếu phẩm tại Lâm Đồng. Đặt hàng online, giao tận nhà siêu tốc.">
     <meta name="google-site-verification" content="VjNwQ35l995_3CANT5rWev8yYeE4jaLvjZS1gbJkiIU" />
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome (Icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <script>
@@ -22,12 +18,11 @@
                     fontFamily: { sans: ['"Be Vietnam Pro"', 'sans-serif'] },
                     colors: {
                         brand: { 
-                            // Tông màu mới: Trắng - Xanh Lá (Nông sản/Sạch) - Xanh Biển (Hải sản)
-                            green: '#10b981',      // Xanh lá dịu (Emerald) - Đại diện cho rau củ/sự tươi mới
-                            darkgreen: '#047857',  // Xanh lá đậm - Nhấn mạnh
-                            blue: '#0ea5e9',       // Xanh biển (Sky) - Đại diện cho hải sản
-                            darkblue: '#0369a1',   // Xanh biển đậm - Nhấn mạnh
-                            orange: '#f59e0b',     // Cam nhẹ (Amber) - Dùng làm điểm nhấn nhỏ (Cảnh báo/Combo)
+                            green: '#10b981',      
+                            darkgreen: '#047857',  
+                            blue: '#0ea5e9',       
+                            darkblue: '#0369a1',   
+                            orange: '#f59e0b',     
                             fb: '#0866FF',
                             zalo: '#0068ff'
                         }
@@ -38,35 +33,27 @@
     </script>
     <style>
         html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent;}
-        body { padding-bottom: 70px; background-color: #f8fafc; } /* Màu nền dịu hơi xám xanh */
+        body { padding-bottom: 70px; background-color: #f8fafc; }
         @media (min-width: 768px) { body { padding-bottom: 0; } }
 
-        /* Ẩn hiện các view */
         .view-section { display: none; animation: fadeIn 0.3s ease-in-out; }
         .view-section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* Badge giỏ hàng nảy lên */
         @keyframes pop { 0% { transform: scale(1); } 50% { transform: scale(1.5); } 100% { transform: scale(1); } }
         .animate-pop { animation: pop 0.3s ease-in-out; }
 
-        /* Ticker - Thanh thông báo khẩn cấp */
         .ticker-wrap { background: var(--tw-color-brand-blue, #0ea5e9); color: white; padding: 6px 0; overflow: hidden; position: relative; font-size: 0.85rem; font-weight: 600; }
-        
         .ticker-move { display: inline-block; white-space: nowrap; padding-right: 100%; animation: ticker 40s linear infinite; }
-        
         @keyframes ticker { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-        /* Bottom Nav Mobile */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-around; padding: 10px 0; z-index: 1000; box-shadow: 0 -4px 15px rgba(16, 185, 129, 0.05); } /* Bóng đổ hơi ánh xanh lá */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-around; padding: 10px 0; z-index: 1000; box-shadow: 0 -4px 15px rgba(16, 185, 129, 0.05); } 
         .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: #64748b; font-size: 0.7rem; font-weight: 600; transition: color 0.2s; }
-        .nav-item.active { color: #10b981; } /* Active màu xanh lá */
+        .nav-item.active { color: #10b981; } 
         
-        /* Chỉnh lại Scrollbar cho mượt */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Modal Hướng dẫn Copy Paste */
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
         .modal-overlay.active { display: flex; animation: fadeIn 0.2s ease-out; }
         .modal-content { background: white; border-radius: 20px; width: 90%; max-width: 400px; padding: 24px; text-align: center; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
@@ -81,18 +68,15 @@
 </head>
 <body class="text-slate-800 font-sans antialiased">
 
-    <!-- Ticker Thông báo -->
     <div class="ticker-wrap bg-gradient-to-r from-brand-blue to-brand-green">
         <div class="ticker-move" id="ticker-text">
             🌊 SỰ KIỆN LÊN GOOGLE MAPS: Chiều nay 16h cập bến mẻ Cá Dìa tươi rói 110k/kg. Bà con dặn trước kẻo hết! 🐟🌿 Gọi Lũy 0398.139.664 giao tận nhà.
         </div>
     </div>
 
-    <!-- Header / Navbar -->
     <nav class="bg-white shadow-sm sticky top-0 z-40 border-b border-emerald-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16 sm:h-20">
-                <!-- Logo -->
                 <div class="flex items-center gap-2 cursor-pointer" onclick="app.navigate('home')">
                     <div class="w-20 h-20 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-green to-emerald-400 rounded-2xl flex items-center justify-center text-white shadow-md border-2 border-white">
                         <img class="rounded-2xl" src="./img/logo.png" alt="">
@@ -103,12 +87,10 @@
                     </div>
                 </div>
 
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="javascript:void(0)" onclick="app.navigate('home')" class="text-slate-600 hover:text-brand-green font-bold transition">Trang chủ</a>
                     <a href="javascript:void(0)" onclick="app.navigate('home'); setTimeout(()=>document.getElementById('mat-hang').scrollIntoView(), 100);" class="text-slate-600 hover:text-brand-green font-bold transition">Hàng mới về</a>
                     
-                    <!-- Giỏ hàng Desktop -->
                     <div class="relative cursor-pointer group" onclick="app.navigate('cart')">
                         <div class="bg-emerald-50 text-brand-green px-5 py-2.5 rounded-full group-hover:bg-brand-green group-hover:text-white transition flex items-center gap-2 font-bold border border-emerald-100">
                             <i class="fa-solid fa-cart-shopping text-lg"></i> Giỏ hàng
@@ -120,9 +102,7 @@
         </div>
     </nav>
 
-    <!-- ==================== VIEW 1: TRANG CHỦ (HOME) ==================== -->
     <div id="view-home" class="view-section active">
-        <!-- Hero Banner -->
         <section class="relative bg-gradient-to-br from-brand-darkgreen via-brand-green to-emerald-400 pt-10 pb-16 lg:pt-16 lg:pb-24 overflow-hidden">
             <div class="absolute inset-0 opacity-20">
                 <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80" alt="Thực phẩm tươi" class="w-full h-full object-cover mix-blend-overlay">
@@ -151,11 +131,9 @@
             </div>
         </section>
 
-        <!-- Product Grid với Phân loại Danh mục -->
         <section id="mat-hang" class="py-10 bg-slate-50 min-h-screen">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                <!-- THANH TÌM KIẾM SẢN PHẨM -->
                 <div class="max-w-2xl mx-auto relative mb-6">
                     <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                         <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
@@ -163,12 +141,9 @@
                     <input type="text" id="search-input" onkeyup="app.searchProduct(this.value)" placeholder="Tìm hải sản, gạo, rau, mắm..." class="w-full pl-12 pr-4 py-3.5 rounded-2xl border border-slate-200 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-emerald-100 shadow-sm transition text-slate-700 bg-white font-medium">
                 </div>
 
-                <!-- Thanh Phân Loại (Tabs) -->
                 <div class="flex overflow-x-auto no-scrollbar justify-start md:justify-center gap-2 sm:gap-3 mb-8 pb-2" id="category-filters">
-                    <!-- Chèn bằng JS -->
-                </div>
+                    </div>
 
-                <!-- Bảng giá cập nhật realtime -->
                 <div class="flex justify-between items-center mb-6 pb-2 border-b border-slate-200">
                     <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2" id="grid-title">
                         <i class="fa-solid fa-fire text-amber-500"></i> Đang bán chạy
@@ -176,15 +151,12 @@
                     <span class="text-xs font-semibold text-slate-500 bg-slate-200 px-3 py-1 rounded-full" id="real-time-clock">Cập nhật: Hôm nay</span>
                 </div>
 
-                <!-- Container chứa sản phẩm (Render bằng JS) -->
                 <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
-                    <!-- Products will be injected here -->
-                </div>
+                    </div>
             </div>
         </section>
     </div>
 
-    <!-- ==================== VIEW 2: CHI TIẾT SẢN PHẨM ==================== -->
     <div id="view-detail" class="view-section bg-slate-50 min-h-screen py-6 md:py-10">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <button onclick="app.navigate('home')" class="bg-white text-slate-600 shadow-sm border border-slate-200 px-4 py-2 rounded-full font-bold mb-6 flex items-center hover:text-brand-green transition">
@@ -192,12 +164,10 @@
             </button>
             
             <div id="detail-content" class="bg-white rounded-3xl shadow-sm border border-slate-100 p-4 md:p-8 flex flex-col md:flex-row gap-6 lg:gap-10">
-                <!-- Content injected by JS -->
-            </div>
+                </div>
         </div>
     </div>
 
-    <!-- ==================== VIEW 3: GIỎ HÀNG & THANH TOÁN ==================== -->
     <div id="view-cart" class="view-section bg-slate-50 min-h-screen py-6 md:py-10">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-2xl font-extrabold text-slate-800 mb-6 flex items-center">
@@ -205,14 +175,11 @@
             </h2>
 
             <div class="flex flex-col lg:flex-row gap-6">
-                <!-- Danh sách món hàng -->
                 <div class="lg:w-3/5 bg-white rounded-2xl shadow-sm border border-slate-100 p-4 md:p-6">
                     <div id="cart-items" class="space-y-4">
-                        <!-- Cart items injected by JS -->
-                    </div>
+                        </div>
                 </div>
 
-                <!-- Form thông tin & Chốt đơn -->
                 <div class="lg:w-2/5">
                     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 md:p-6 sticky top-24">
                         <h3 class="font-bold text-lg mb-4 text-slate-800">Thông tin nhận hàng</h3>
@@ -235,7 +202,6 @@
                             </div>
                         </div>
 
-                        <!-- Buttons Chốt Đơn -->
                         <div class="space-y-3">
                             <button onclick="app.checkout('zalo')" class="w-full bg-brand-zalo text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 hover:bg-blue-600 transition shadow-md">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Icon_of_Zalo.svg/1200px-Icon_of_Zalo.svg.png" alt="Zalo" class="w-6 h-6 bg-white rounded-full p-1" />
@@ -252,12 +218,10 @@
         </div>
     </div>
 
-    <!-- ==================== FOOTER (CHÂN TRANG) ==================== -->
     <footer class="bg-slate-900 text-slate-300 pt-16 pb-24 md:pb-12 mt-10 border-t-4 border-brand-green">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
                 
-                <!-- Cột 1: Thông tin thương hiệu -->
                 <div class="space-y-4">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-12 h-12 bg-gradient-to-br from-brand-green to-emerald-400 rounded-xl flex items-center justify-center text-white shadow-md">
@@ -281,7 +245,6 @@
                     </div>
                 </div>
 
-                <!-- Cột 2: Thông tin liên hệ -->
                 <div class="space-y-4">
                     <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
                         <i class="fa-solid fa-location-dot text-amber-500"></i> Liên Hệ Em Lũy
@@ -311,7 +274,6 @@
                     </ul>
                 </div>
 
-                <!-- Cột 3: Cam kết & Chính sách -->
                 <div class="space-y-4">
                     <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
                         <i class="fa-solid fa-shield-halved text-amber-500"></i> Cam Kết Của Tiệm
@@ -334,7 +296,6 @@
 
             </div>
 
-            <!-- Dòng bản quyền -->
             <div class="border-t border-slate-800 mt-12 pt-6 text-center text-xs text-slate-500 flex flex-col md:flex-row justify-between items-center gap-2">
                 <p>&copy; 2026 Tạp Hóa Sang Lũy. Tất cả quyền được bảo lưu.</p>
                 <p>Thiết kế bằng cả tấm lòng dành cho bà con.</p>
@@ -342,15 +303,12 @@
         </div>
     </footer>
 
-    <!-- Mobile Bottom Navigation -->
     <nav class="bottom-nav md:hidden" id="mobile-bottom-nav">
         <a href="javascript:void(0)" onclick="app.navigate('home')" class="nav-item" id="nav-btn-home">
-            <i class="fa-solid fa-house text-xl mb-1"></i>
-            Trang chủ
+            <i class="fa-solid fa-house text-xl mb-1"></i> Trang chủ
         </a>
         <a href="javascript:void(0)" onclick="app.navigate('home'); document.getElementById('search-input').focus();" class="nav-item">
-            <i class="fa-solid fa-magnifying-glass text-xl mb-1"></i>
-            Tìm kiếm
+            <i class="fa-solid fa-magnifying-glass text-xl mb-1"></i> Tìm kiếm
         </a>
         <a href="tel:0398139664" class="nav-item relative top-[-15px]">
             <div class="w-12 h-12 bg-gradient-to-r from-brand-green to-emerald-400 text-white rounded-full flex items-center justify-center shadow-lg shadow-emerald-200 border-4 border-white animate-bounce">
@@ -359,26 +317,21 @@
             <span class="mt-1 absolute -bottom-4 whitespace-nowrap text-brand-green">Gọi Lũy</span>
         </a>
         <a href="javascript:void(0)" onclick="app.navigate('cart')" class="nav-item relative" id="nav-btn-cart">
-            <i class="fa-solid fa-basket-shopping text-xl mb-1"></i>
-            Giỏ hàng
+            <i class="fa-solid fa-basket-shopping text-xl mb-1"></i> Giỏ hàng
             <span id="mobile-cart-count" class="absolute -top-1 right-2 bg-amber-500 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full border border-white">0</span>
         </a>
     </nav>
 
-    <!-- Toast Thông báo -->
     <div id="toast" class="fixed top-20 md:bottom-10 md:top-auto left-1/2 transform -translate-x-1/2 bg-slate-900/90 backdrop-blur-sm text-white px-6 py-3 rounded-full shadow-xl z-50 transition-all duration-300 opacity-0 -translate-y-10 md:translate-y-10 pointer-events-none flex items-center gap-3 border border-slate-700">
         <i class="fa-solid fa-circle-check text-brand-green text-lg"></i> <span id="toast-msg" class="font-medium text-sm">Thêm thành công</span>
     </div>
 
-    <!-- Modal Hướng dẫn Copy Paste -->
     <div id="checkout-modal" class="modal-overlay">
         <div class="modal-content relative">
             <div class="w-16 h-16 bg-brand-green text-white rounded-full flex items-center justify-center text-3xl mx-auto -mt-12 mb-4 border-4 border-white shadow-lg animate-pulse-ring">
                 <i class="fa-solid fa-check"></i>
             </div>
-            
             <h3 class="text-xl font-extrabold text-slate-800 mb-2">Đã tạo đơn hàng!</h3>
-            
             <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-5 text-left">
                 <p class="text-sm font-bold text-amber-700 mb-2 flex items-center gap-2">
                     <i class="fa-solid fa-lightbulb"></i> Lũy hướng dẫn xíu nha:
@@ -389,7 +342,6 @@
                     <li>Bạn chỉ cần <span class="font-bold text-slate-900 bg-white px-2 py-0.5 rounded border shadow-sm">Dán (Paste)</span> vào khung chat và gửi cho Lũy nhé!</li>
                 </ol>
             </div>
-            
             <button id="btn-open-app" class="w-full bg-brand-green text-white font-bold py-3 rounded-xl shadow-md hover:bg-emerald-600 transition flex items-center justify-center gap-2">
                 Mở <span id="modal-btn-name">Zalo</span> ngay (<span id="countdown">5</span>s)
             </button>
@@ -398,22 +350,61 @@
     </div>
 
     <script>
-        // 1. DATABASE
-        const dbProducts = [
-            // --- HẢI SẢN (Màu xanh biển) ---
-            { id: 1, name: 'Cá Dìa Tươi Rói (3-4 con/kg)', price: 110000, img: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=500&q=80', desc: 'Mới cập bến lúc 16h. Nấu ngót hay nướng muối ớt bao ngon. Mua ngay kẻo hết!', category: 'Hải Sản Biển', badge: 'Hàng Mới' },
-            { id: 2, name: 'CÁ NỤC TƯƠI RÓI CHỈ 70K/KÝ', price: 380000, img: './img/cá nục 2.jpg', desc: 'Bữa nay Tạp Hóa Sang Lũy về mẻ cá nục tươi xanh mơn mởn, con nào con nấy chắc nịch. Đặc biệt giá cực kỳ bình dân, chỉ 70 cành / 1 ký thôi ạ! Mua 1 ký là cả nhà 3-4 người gắp mỏi tay luôn.', category: 'Hải Sản Biển', badge: 'Bán Chạy' },
-            { id: 3, name: 'Tôm Thẻ Chân Trắng (Size to)', price: 220000, img: 'https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=500&q=80', desc: 'Tôm sống nhảy lách tách, thích hợp nấu lẩu, nướng sa tế.', category: 'Hải Sản Biển' },
-            // --- COMBO ---
-            { id: 4, name: 'Combo: Nồi Lẩu Hải Sản 4 Người', price: 250000, img: 'https://images.unsplash.com/photo-1548943487-a2e4b43b584f?auto=format&fit=crop&w=500&q=80', desc: 'Gồm: Nửa ký tôm, nửa ký mực, kèm gói gia vị lẩu Thái, nấm, rau muống. Mua 1 bịch về đổ nước là ăn.', category: 'Combo Bữa Ăn', badge: 'Tiện Lợi' },
-            { id: 5, name: 'Combo: Cá Dìa Nấu Ngót', price: 125000, img: 'https://images.unsplash.com/photo-1544025162-811114b7e8d6?auto=format&fit=crop&w=500&q=80', desc: 'Gồm 1kg Cá Dìa tươi, cà chua, hành ngò, khế chua. Tặng kèm túi bột ngọt nhỏ.', category: 'Combo Bữa Ăn' },
-            // --- NÔNG SẢN / TẠP HÓA (Màu xanh lá) ---
-            { id: 6, name: 'Gạo ST25 Lúa Tôm (Túi 5kg)', price: 195000, img: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=500&q=80', desc: 'Gạo dẻo, thơm lừng. Hàng chính hãng chú Hồ Quang Cua.', category: 'Tạp Hóa Thiết Yếu' },
-            { id: 7, name: 'Nước Mắm Nhĩ Truyền Thống 500ml', price: 85000, img: 'https://images.unsplash.com/photo-162070612211c-64b11cabc6a2?auto=format&fit=crop&w=500&q=80', desc: 'Mắm cá cơm rin nguyên chất, kho cá hay làm nước mắm tỏi ớt đều ngon.', category: 'Tạp Hóa Thiết Yếu' },
-            { id: 8, name: 'Rau Xà Lách Cuộn (Lâm Đồng)', price: 15000, img: 'https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?auto=format&fit=crop&w=500&q=80', desc: 'Rau sạch trồng tại vườn Lâm Đồng, tươi giòn, ăn sống cực ngon.', category: 'Nông Sản Sạch' }
-        ];
+        // ==========================================
+        // 1. DATA CẤU HÌNH API GOOGLE SHEETS
+        // ==========================================
+        let dbProducts = []; 
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyRjTUkB7cKLYedltBjwKZJUqpDo_NbV6cGJnej-M-fxMdLpIJ3tFibuZfUiwRDKDlYgQ/exec';
 
-        // 2. STATE MANAGEMENT (Quản lý trạng thái App)
+        async function fetchProducts() {
+            try {
+                // Hiển thị loading state
+                const grid = document.getElementById('product-grid');
+                if (grid) {
+                    grid.innerHTML = `
+                        <div class="col-span-full text-center py-16">
+                            <i class="fa-solid fa-spinner fa-spin text-4xl text-brand-green mb-4"></i>
+                            <p class="text-slate-500 font-medium">Lũy đang dọn hàng ra kệ, bà con đợi xíu nhen...</p>
+                        </div>`;
+                }
+
+                // Gọi API lấy dữ liệu
+                const response = await fetch(SCRIPT_URL);
+                const rawData = await response.json();
+                
+                // Chuẩn hóa dữ liệu trả về
+                dbProducts = rawData.map(item => ({
+                    id: Number(item.id),
+                    name: item.name || '',
+                    price: Number(item.price) || 0,
+                    img: item.img || './img/default.jpg',
+                    desc: item.desc || '',
+                    category: item.category || 'Chưa phân loại',
+                    badge: item.badge || ''
+                }));
+
+                // Render lại giao diện
+                app.renderCategories();
+                app.renderHome();
+
+            } catch (error) {
+                console.error('Lỗi lấy hàng từ Google Sheets:', error);
+                const grid = document.getElementById('product-grid');
+                if (grid) {
+                    grid.innerHTML = `
+                        <div class="col-span-full text-center py-16 bg-red-50 rounded-2xl border border-red-200">
+                            <i class="fa-solid fa-triangle-exclamation text-3xl text-red-500 mb-3"></i>
+                            <p class="text-red-600 font-bold mb-1">Ối, không tải được danh sách món!</p>
+                            <p class="text-sm text-red-500 mb-4">Bà con kiểm tra mạng hoặc tải lại trang giúp Lũy nha.</p>
+                            <button onclick="window.location.reload()" class="bg-red-500 text-white px-6 py-2 rounded-full font-bold shadow-sm hover:bg-red-600 transition">Tải Lại Trang</button>
+                        </div>`;
+                }
+            }
+        }
+
+        // ==========================================
+        // 2. LOGIC QUẢN LÝ ỨNG DỤNG (STATE & CART)
+        // ==========================================
         const app = {
             cart: [],
             currentView: 'home',
@@ -447,52 +438,45 @@
                 setTimeout(() => toast.classList.add('opacity-0', '-translate-y-10', 'md:translate-y-10', 'pointer-events-none'), 2000);
             },
 
+            // Thay thế hàm cũ bằng hàm này
             renderCategories: function() {
-                const categories = ['Tất cả', 'Hải Sản Biển', 'Nông Sản Sạch', 'Combo Bữa Ăn', 'Tạp Hóa Thiết Yếu'];
+                // Tự động quét và lấy các Danh Mục có trong Google Sheets (không bị trùng lặp)
+                const categories = ['Tất cả', ...new Set(dbProducts.map(p => p.category).filter(c => c))];
+                
                 const container = document.getElementById('category-filters');
                 container.innerHTML = categories.map(cat => {
+                    // Mặc định màu xám
                     let activeClass = 'bg-white text-slate-600 border-slate-200 hover:border-brand-green';
-                    let icon = '';
                     
+                    // Nếu đang được chọn thì bôi xanh
                     if (this.activeCategory === cat) {
-                        if (cat.includes('Hải Sản')) {
-                            activeClass = 'bg-brand-blue text-white border-brand-blue shadow-md';
-                            icon = '🦀 ';
-                        } else if (cat.includes('Nông Sản') || cat.includes('Tạp Hóa')) {
-                            activeClass = 'bg-brand-green text-white border-brand-green shadow-md';
-                            icon = '🥬 ';
-                        } else {
-                            activeClass = 'bg-amber-500 text-white border-amber-500 shadow-md';
-                            icon = '🍲 ';
-                        }
-                    } else {
-                        if (cat === 'Hải Sản Biển') icon = '🐟 ';
-                        if (cat === 'Nông Sản Sạch') icon = '🥦 ';
+                        activeClass = 'bg-brand-green text-white border-brand-green shadow-md';
                     }
 
                     return `
                     <button onclick="app.filterCategory('${cat}')" class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold transition border-2 ${activeClass}">
-                        ${icon}${cat}
+                        ${cat}
                     </button>
                     `;
                 }).join('');
             },
 
+            // Thay thế hàm cũ bằng hàm này
             filterCategory: function(cat) {
                 this.activeCategory = cat;
                 this.searchKeyword = ''; 
                 document.getElementById('search-input').value = '';
                 
                 const title = document.getElementById('grid-title');
-                if(cat === 'Hải Sản Biển') title.innerHTML = '<i class="fa-solid fa-water text-brand-blue"></i> Hải Sản Biển Tươi';
-                else if(cat === 'Nông Sản Sạch') title.innerHTML = '<i class="fa-solid fa-leaf text-brand-green"></i> Nông Sản Xanh Sạch';
-                else if(cat === 'Combo Bữa Ăn') title.innerHTML = '<i class="fa-solid fa-utensils text-amber-500"></i> Combo Tiện Lợi';
-                else title.innerHTML = '<i class="fa-solid fa-fire text-amber-500"></i> Đang Bán Chạy';
+                if(cat === 'Tất cả') {
+                    title.innerHTML = '<i class="fa-solid fa-fire text-amber-500"></i> Đang bán chạy';
+                } else {
+                    title.innerHTML = `<i class="fa-solid fa-tags text-brand-green"></i> Danh mục: ${cat}`;
+                }
 
                 this.renderCategories();
                 this.renderHome();
             },
-
             searchProduct: function(keyword) {
                 this.searchKeyword = keyword.toLowerCase().trim();
                 this.activeCategory = 'Tất cả';
@@ -613,6 +597,10 @@
                 }
                 
                 this.updateCartUI();
+                
+                // LƯU GIỎ HÀNG VÀO LOCALSTORAGE
+                localStorage.setItem('sangluy_cart', JSON.stringify(this.cart));
+
                 if(goCart) this.navigate('cart');
                 else this.showToast('Đã lấy thêm 1 ' + product.name);
             },
@@ -620,7 +608,12 @@
             changeQty: function(index, delta) {
                 this.cart[index].qty += delta;
                 if(this.cart[index].qty <= 0) this.cart.splice(index, 1);
+                
                 this.updateCartUI();
+                
+                // CẬP NHẬT LẠI LOCALSTORAGE KHI THAY ĐỔI SỐ LƯỢNG
+                localStorage.setItem('sangluy_cart', JSON.stringify(this.cart));
+                
                 this.renderCart();
             },
 
@@ -682,7 +675,6 @@
                 document.body.removeChild(textArea);
             },
 
-            // Countdown Timer Variables
             countdownTimer: null,
             
             openAppAction: function(platform, url) {
@@ -690,6 +682,10 @@
                 document.getElementById('checkout-modal').classList.remove('active');
                 this.cart = [];
                 this.updateCartUI();
+                
+                // XÓA GIỎ HÀNG SAU KHI ĐÃ ĐẶT HÀNG XONG
+                localStorage.removeItem('sangluy_cart');
+                
                 this.navigate('home');
             },
 
@@ -722,11 +718,10 @@
                 let appName = '';
                 let themeClass = '';
 
-                // Copy thông tin an toàn
                 this.copyToClipboardSafe(orderText);
 
                 if(platform === 'facebook') {
-                    appUrl = 'https://www.facebook.com/taphoasangluy'; // Thay ID Fanpage vào đây
+                    appUrl = 'https://www.facebook.com/taphoasangluy'; 
                     appName = 'Messenger';
                     themeClass = 'text-brand-fb';
                     document.getElementById('btn-open-app').className = "w-full bg-brand-fb text-white font-bold py-3 rounded-xl shadow-md hover:bg-blue-700 transition flex items-center justify-center gap-2";
@@ -737,22 +732,18 @@
                     document.getElementById('btn-open-app').className = "w-full bg-brand-zalo text-white font-bold py-3 rounded-xl shadow-md hover:bg-blue-600 transition flex items-center justify-center gap-2";
                 }
 
-                // Setup Modal Nội dung
                 document.getElementById('modal-app-name').innerText = appName;
                 document.getElementById('modal-app-name').className = `font-bold ${themeClass}`;
                 document.getElementById('modal-btn-name').innerText = appName;
                 
-                // Hiện Modal
                 const modal = document.getElementById('checkout-modal');
                 modal.classList.add('active');
 
-                // Logic Đếm ngược
                 let seconds = 5;
                 document.getElementById('countdown').innerText = seconds;
                 
-                clearInterval(this.countdownTimer); // Xóa timer cũ nếu có
+                clearInterval(this.countdownTimer); 
                 
-                // Nút "Mở ngay" được gán sự kiện click mới
                 const btnOpen = document.getElementById('btn-open-app');
                 btnOpen.onclick = () => {
                     clearInterval(this.countdownTimer);
@@ -764,7 +755,6 @@
                     document.getElementById('countdown').innerText = seconds;
                     if(seconds <= 0) {
                         clearInterval(this.countdownTimer);
-                        // Chỉ tự động mở nếu modal vẫn đang hiển thị (người dùng chưa bấm Đóng)
                         if(modal.classList.contains('active')) {
                             this.openAppAction(platform, appUrl);
                         }
@@ -780,9 +770,23 @@
             document.getElementById('real-time-clock').innerText = `Cập nhật: ${timeStr} - ${dateStr}`;
         }
 
+        // ==========================================
+        // 3. KHỞI TẠO ỨNG DỤNG KHI TẢI TRANG
+        // ==========================================
         window.onload = () => {
             setRealTime();
+            
+            // Lấy lại giỏ hàng cũ nếu khách lỡ F5 hoặc thoát web
+            const savedCart = localStorage.getItem('sangluy_cart');
+            if(savedCart) {
+                app.cart = JSON.parse(savedCart);
+                app.updateCartUI(); 
+            }
+
             app.navigate('home');
+            
+            // Bắt đầu lấy dữ liệu từ Google Sheets
+            fetchProducts(); 
         };
     </script>
 </body>
