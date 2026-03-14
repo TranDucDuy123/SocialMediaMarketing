@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tạp Hóa Sang Lũy - Hải Sản Tươi & Siêu Thị Mini Lâm Đồng</title>
-    <meta name="description" content="Tạp hóa Sang Lũy chuyên cung cấp hải sản tươi sống từ biển lên cao nguyên và gạo, gia vị, nhu yếu phẩm tại Lâm Đồng. Đặt hàng online, giao tận nhà siêu tốc.">
-    <meta name="google-site-verification" content="VjNwQ35l995_3CANT5rWev8yYeE4jaLvjZS1gbJkiIU" />
+    <title>Tạp Hóa Sang Lũy - Tươi Sạch Mỗi Ngày</title>
+    <meta name="description" content="Tạp hóa Sang Lũy cung cấp nhu yếu phẩm, thực phẩm sạch tại Lâm Đồng. Đặt hàng online, giao tận nhà.">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,13 +17,9 @@
                     fontFamily: { sans: ['"Be Vietnam Pro"', 'sans-serif'] },
                     colors: {
                         brand: { 
-                            green: '#10b981',      
-                            darkgreen: '#047857',  
-                            blue: '#0ea5e9',       
-                            darkblue: '#0369a1',   
-                            orange: '#f59e0b',     
-                            fb: '#0866FF',
-                            zalo: '#0068ff'
+                            green: '#10b981', darkgreen: '#047857', 
+                            blue: '#0ea5e9', darkblue: '#0369a1', 
+                            orange: '#f59e0b', fb: '#0866FF', zalo: '#0068ff'
                         }
                     }
                 }
@@ -69,8 +64,8 @@
 <body class="text-slate-800 font-sans antialiased">
 
     <div class="ticker-wrap bg-gradient-to-r from-brand-blue to-brand-green">
-        <div class="ticker-move" id="ticker-text">
-            🌊 SỰ KIỆN LÊN GOOGLE MAPS: Chiều nay 16h cập bến mẻ Cá Dìa tươi rói 110k/kg. Bà con dặn trước kẻo hết! 🐟🌿 Gọi Lũy 0398.139.664 giao tận nhà.
+        <div class="ticker-move">
+            🌊 MUA SẮM TIỆN LỢI - GIAO HÀNG TẬN NƠI. Gọi Lũy 0398.139.664 để được phục vụ chu đáo nhất! 🌿
         </div>
     </div>
 
@@ -78,8 +73,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16 sm:h-20">
                 <div class="flex items-center gap-2 cursor-pointer" onclick="app.navigate('home')">
-                    <div class="w-20 h-20 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-green to-emerald-400 rounded-2xl flex items-center justify-center text-white shadow-md border-2 border-white">
-                        <img class="rounded-2xl" src="./img/logo.png" alt="">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-brand-green to-emerald-400 rounded-2xl flex items-center justify-center text-white shadow-md border-2 border-white">
+                        <i class="fa-solid fa-leaf text-2xl"></i>
                     </div>
                     <div>
                         <h1 class="font-extrabold text-xl sm:text-2xl text-slate-800 tracking-tight leading-none">SANG LŨY</h1>
@@ -89,7 +84,7 @@
 
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="javascript:void(0)" onclick="app.navigate('home')" class="text-slate-600 hover:text-brand-green font-bold transition">Trang chủ</a>
-                    <a href="javascript:void(0)" onclick="app.navigate('home'); setTimeout(()=>document.getElementById('mat-hang').scrollIntoView(), 100);" class="text-slate-600 hover:text-brand-green font-bold transition">Hàng mới về</a>
+                    <a href="javascript:void(0)" onclick="app.navigate('home'); setTimeout(()=>document.getElementById('mat-hang').scrollIntoView(), 100);" class="text-slate-600 hover:text-brand-green font-bold transition">Cửa hàng</a>
                     
                     <div class="relative cursor-pointer group" onclick="app.navigate('cart')">
                         <div class="bg-emerald-50 text-brand-green px-5 py-2.5 rounded-full group-hover:bg-brand-green group-hover:text-white transition flex items-center gap-2 font-bold border border-emerald-100">
@@ -104,25 +99,21 @@
 
     <div id="view-home" class="view-section active">
         <section class="relative bg-gradient-to-br from-brand-darkgreen via-brand-green to-emerald-400 pt-10 pb-16 lg:pt-16 lg:pb-24 overflow-hidden">
-            <div class="absolute inset-0 opacity-20">
-                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80" alt="Thực phẩm tươi" class="w-full h-full object-cover mix-blend-overlay">
-            </div>
+            <div class="absolute inset-0 opacity-20 bg-black"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-brand-darkgreen/90 to-transparent"></div>
-
             <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
                 <span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white/20 text-white text-sm font-bold mb-6 backdrop-blur-sm border border-white/30">
-                    <i class="fa-solid fa-water"></i> Hải Sản & <i class="fa-solid fa-carrot"></i> Nông Sản
+                    <i class="fa-solid fa-store"></i> Tạp Hóa Trực Tuyến
                 </span>
                 <h2 class="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight text-white drop-shadow-md">
-                    Hải Sản <span class="text-emerald-100">Từ Biển</span><br />
-                    Lên Thẳng <span class="text-emerald-200">Cao Nguyên</span>
+                    Đi Chợ Online <br /> <span class="text-emerald-200">Giao Ngay Tận Bếp</span>
                 </h2>
                 <p class="text-base md:text-lg text-emerald-50 mb-8 max-w-2xl mx-auto font-medium">
-                    Tạp Hóa Sang Lũy cam kết thực phẩm tươi sạch mỗi ngày. Cần lẩu hải sản hay gạo, rau mắm muối, cứ ới Lũy là có ngay!
+                    Tạp Hóa Sang Lũy cam kết hàng hóa chất lượng, giá cả bình dân. Cần gạo, gia vị hay nhu yếu phẩm, cứ ới Lũy là có ngay!
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <button onclick="document.getElementById('mat-hang').scrollIntoView()" class="bg-white text-brand-darkgreen px-8 py-3.5 rounded-full font-bold text-lg hover:bg-emerald-50 transition shadow-lg flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-basket-shopping"></i> Đi Chợ Hôm Nay
+                        <i class="fa-solid fa-basket-shopping"></i> Mua Sắm Ngay
                     </button>
                     <a href="tel:0398139664" class="bg-brand-darkblue text-white px-8 py-3.5 rounded-full font-bold text-lg hover:bg-sky-700 transition shadow-lg flex items-center justify-center gap-2">
                         <i class="fa-solid fa-phone"></i> Gọi 0398.139.664
@@ -133,26 +124,23 @@
 
         <section id="mat-hang" class="py-10 bg-slate-50 min-h-screen">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
                 <div class="max-w-2xl mx-auto relative mb-6">
                     <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                         <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
                     </div>
-                    <input type="text" id="search-input" onkeyup="app.searchProduct(this.value)" placeholder="Tìm hải sản, gạo, rau, mắm..." class="w-full pl-12 pr-4 py-3.5 rounded-2xl border border-slate-200 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-emerald-100 shadow-sm transition text-slate-700 bg-white font-medium">
+                    <input type="text" id="search-input" onkeyup="app.searchProduct(this.value)" placeholder="Tìm kiếm món đồ bạn cần..." class="w-full pl-12 pr-4 py-3.5 rounded-2xl border border-slate-200 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-emerald-100 shadow-sm transition text-slate-700 bg-white font-medium">
                 </div>
 
-                <div class="flex overflow-x-auto no-scrollbar justify-start md:justify-center gap-2 sm:gap-3 mb-8 pb-2" id="category-filters">
-                    </div>
+                <div class="flex overflow-x-auto no-scrollbar justify-start md:justify-center gap-2 sm:gap-3 mb-8 pb-2" id="category-filters"></div>
 
                 <div class="flex justify-between items-center mb-6 pb-2 border-b border-slate-200">
                     <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2" id="grid-title">
-                        <i class="fa-solid fa-fire text-amber-500"></i> Đang bán chạy
+                        <i class="fa-solid fa-fire text-amber-500"></i> Tất Cả Sản Phẩm
                     </h2>
-                    <span class="text-xs font-semibold text-slate-500 bg-slate-200 px-3 py-1 rounded-full" id="real-time-clock">Cập nhật: Hôm nay</span>
+                    <span class="text-xs font-semibold text-slate-500 bg-slate-200 px-3 py-1 rounded-full" id="real-time-clock">Hôm nay</span>
                 </div>
 
-                <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
-                    </div>
+                <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6"></div>
             </div>
         </section>
     </div>
@@ -162,9 +150,7 @@
             <button onclick="app.navigate('home')" class="bg-white text-slate-600 shadow-sm border border-slate-200 px-4 py-2 rounded-full font-bold mb-6 flex items-center hover:text-brand-green transition">
                 <i class="fa-solid fa-arrow-left mr-2"></i> Trở về
             </button>
-            
-            <div id="detail-content" class="bg-white rounded-3xl shadow-sm border border-slate-100 p-4 md:p-8 flex flex-col md:flex-row gap-6 lg:gap-10">
-                </div>
+            <div id="detail-content" class="bg-white rounded-3xl shadow-sm border border-slate-100 p-4 md:p-8"></div>
         </div>
     </div>
 
@@ -173,44 +159,36 @@
             <h2 class="text-2xl font-extrabold text-slate-800 mb-6 flex items-center">
                 <i class="fa-solid fa-basket-shopping text-brand-green mr-3"></i> Giỏ Hàng Của Bạn
             </h2>
-
             <div class="flex flex-col lg:flex-row gap-6">
                 <div class="lg:w-3/5 bg-white rounded-2xl shadow-sm border border-slate-100 p-4 md:p-6">
-                    <div id="cart-items" class="space-y-4">
-                        </div>
+                    <div id="cart-items" class="space-y-4"></div>
                 </div>
 
                 <div class="lg:w-2/5">
                     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 md:p-6 sticky top-24">
                         <h3 class="font-bold text-lg mb-4 text-slate-800">Thông tin nhận hàng</h3>
                         <div class="space-y-4 mb-6">
-                            <div>
-                                <input type="text" id="customer-name" class="w-full border border-slate-200 bg-slate-50 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-green focus:bg-white transition" placeholder="Tên của bạn (VD: Cô Năm, Chú Bảy) *">
-                            </div>
-                            <div>
-                                <input type="tel" id="customer-phone" class="w-full border border-slate-200 bg-slate-50 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-green focus:bg-white transition" placeholder="Số điện thoại gọi giao hàng *">
-                            </div>
-                            <div>
-                                <textarea id="customer-address" rows="3" class="w-full border border-slate-200 bg-slate-50 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-green focus:bg-white transition" placeholder="Địa chỉ giao & Lời nhắn (VD: Kèm 2 bó rau, lấy loại cá to...) *"></textarea>
-                            </div>
+                            <input type="text" id="customer-name" class="w-full border border-slate-200 bg-slate-50 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-green" placeholder="Tên người nhận *">
+                            <input type="tel" id="customer-phone" class="w-full border border-slate-200 bg-slate-50 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-green" placeholder="Số điện thoại *">
+                            <textarea id="customer-address" rows="3" class="w-full border border-slate-200 bg-slate-50 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-green" placeholder="Địa chỉ giao & Lời nhắn *"></textarea>
                         </div>
-
-                        <div class="border-t border-slate-100 pt-4 mb-6">
-                            <div class="flex justify-between font-extrabold text-xl">
-                                <span>Tổng cộng:</span>
-                                <span id="cart-total-price" class="text-brand-green">0đ</span>
-                            </div>
+                        <div class="border-t border-slate-100 pt-4 mb-6 flex justify-between font-extrabold text-xl">
+                            <span>Tổng cộng:</span>
+                            <span id="cart-total-price" class="text-brand-green">0đ</span>
                         </div>
-
-                        <div class="space-y-3">
-                            <button onclick="app.checkout('zalo')" class="w-full bg-brand-zalo text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 hover:bg-blue-600 transition shadow-md">
+                        <div class="space-y-3 mt-4">
+                            <button id="btn-zalo" onclick="app.checkoutAndSave('zalo')" class="w-full bg-brand-zalo text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 hover:bg-blue-600 transition shadow-md">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Icon_of_Zalo.svg/1200px-Icon_of_Zalo.svg.png" alt="Zalo" class="w-6 h-6 bg-white rounded-full p-1" />
                                 Gửi đơn ngay qua Zalo
                             </button>
-                            <button onclick="app.checkout('facebook')" class="w-full bg-brand-fb text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 hover:bg-blue-700 transition shadow-md">
+                            
+                            <button id="btn-fb" onclick="app.checkoutAndSave('facebook')" class="w-full bg-brand-fb text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 hover:bg-blue-700 transition shadow-md">
                                 <i class="fa-brands fa-facebook-messenger text-xl"></i> Chốt qua Messenger
                             </button>
-                            <p class="text-[11px] text-slate-500 text-center mt-2 font-medium">Lũy sẽ soạn hàng và báo lại ngay cho bà con.</p>
+                            
+                            <p class="text-[11px] text-slate-500 text-center mt-2 font-medium">
+                                <i class="fa-solid fa-cloud-arrow-up text-brand-green"></i> Đơn hàng sẽ được lưu tự động và gửi cho Lũy.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -221,7 +199,6 @@
     <footer class="bg-slate-900 text-slate-300 pt-16 pb-24 md:pb-12 mt-10 border-t-4 border-brand-green">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
-                
                 <div class="space-y-4">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-12 h-12 bg-gradient-to-br from-brand-green to-emerald-400 rounded-xl flex items-center justify-center text-white shadow-md">
@@ -232,179 +209,111 @@
                             <p class="text-[10px] text-emerald-400 font-bold uppercase tracking-wider">Hải Sản & Tạp Hóa</p>
                         </div>
                     </div>
-                    <p class="text-sm leading-relaxed text-slate-400">
-                        Tạp Hóa Sang Lũy tự hào mang đến cho bà con những bữa cơm ngon với hải sản tươi sống từ biển chuyển thẳng lên cao nguyên và đầy đủ nhu yếu phẩm thiết yếu.
-                    </p>
-                    <div class="flex gap-3 pt-2">
-                        <a href="https://zalo.me/0398139664" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-zalo hover:text-white transition-colors">
-                            <i class="fa-solid fa-comment-dots"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-fb hover:text-white transition-colors">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
+                    <p class="text-sm leading-relaxed text-slate-400">Luôn cam kết hàng hóa rõ nguồn gốc, cân đúng bán đủ.</p>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2"><i class="fa-solid fa-location-dot text-amber-500"></i> Liên Hệ</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-phone text-emerald-500"></i> 0398.139.664</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-map-pin text-emerald-500"></i> Lâm Đồng</li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2"><i class="fa-solid fa-shield-halved text-amber-500"></i> Cam Kết</h3>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Chất lượng đảm bảo</li>
+                        <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Giao hàng tận nơi</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-10 border-t border-slate-800 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-map-location-dot text-brand-green"></i> Vị trí cửa hàng
+                    </h3>
+                    <div class="h-80 w-full rounded-2xl overflow-hidden border border-slate-700 shadow-xl bg-slate-800 relative z-10">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2133.698973417421!2d107.63462003784241!3d11.24513997961246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31746b6fa7db252f%3A0x850496041249daed!2zVOG6oXAgSMOzYSBTYW5nIEzFqXk!5e0!3m2!1svi!2s!4v1773500637957!5m2!1svi!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
 
                 <div class="space-y-4">
-                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-location-dot text-amber-500"></i> Liên Hệ Em Lũy
+                    <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                        <i class="fa-brands fa-facebook text-brand-fb"></i> Theo dõi Fanpage
                     </h3>
-                    <ul class="space-y-3 text-sm">
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-phone mt-1 text-emerald-500"></i>
-                            <div>
-                                <p class="font-semibold text-white">Hotline / Zalo đặt hàng:</p>
-                                <a href="tel:0398139664" class="text-brand-green hover:text-emerald-400 text-lg font-bold transition-colors">0398.139.664</a>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-map-pin mt-1 text-emerald-500"></i>
-                            <div>
-                                <p class="font-semibold text-white">Địa chỉ cửa hàng:</p>
-                                <p class="text-slate-400">Khu vực Lâm Đồng (Giao hàng tận nơi bán kính 5km)</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-clock mt-1 text-emerald-500"></i>
-                            <div>
-                                <p class="font-semibold text-white">Giờ mở cửa:</p>
-                                <p class="text-slate-400">06:00 Sáng - 21:00 Tối (Tất cả các ngày trong tuần)</p>
-                            </div>
-                        </li>
-                    </ul>
+                    <div class="h-80 w-full rounded-2xl overflow-hidden border border-slate-700 shadow-xl bg-white flex items-center justify-center">
+                        <iframe 
+                            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ftaphoasangluy&tabs=timeline&width=500&height=320&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" 
+                            width="500" 
+                            height="320" 
+                            style="border:none;overflow:hidden; max-width: 100%;" 
+                            scrolling="no" 
+                            frameborder="0" 
+                            allowfullscreen="true" 
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                        </iframe>
+                    </div>
                 </div>
-
-                <div class="space-y-4">
-                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-shield-halved text-amber-500"></i> Cam Kết Của Tiệm
-                    </h3>
-                    <ul class="space-y-3 text-sm text-slate-400">
-                        <li class="flex items-center gap-2">
-                            <i class="fa-solid fa-check text-emerald-500"></i> Hải sản tươi sống, bao ốp 1 đổi 1.
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fa-solid fa-check text-emerald-500"></i> Cân đúng, bán đủ, giá cả bình dân.
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fa-solid fa-check text-emerald-500"></i> Nhận làm sạch cá, mực miễn phí.
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fa-solid fa-check text-emerald-500"></i> Hỗ trợ đi chợ giùm, ship tận bếp.
-                        </li>
-                    </ul>
-                </div>
-
             </div>
 
-            <div class="border-t border-slate-800 mt-12 pt-6 text-center text-xs text-slate-500 flex flex-col md:flex-row justify-between items-center gap-2">
-                <p>&copy; 2026 Tạp Hóa Sang Lũy. Tất cả quyền được bảo lưu.</p>
-                <p>Thiết kế bằng cả tấm lòng dành cho bà con.</p>
+            <div class="border-t border-slate-800 mt-12 pt-6 text-center text-xs text-slate-500">
+                <p>© 2026 Tạp Hóa Sang Lũy. Tất cả quyền được bảo lưu.</p>
             </div>
         </div>
     </footer>
 
     <nav class="bottom-nav md:hidden" id="mobile-bottom-nav">
-        <a href="javascript:void(0)" onclick="app.navigate('home')" class="nav-item" id="nav-btn-home">
-            <i class="fa-solid fa-house text-xl mb-1"></i> Trang chủ
-        </a>
-        <a href="javascript:void(0)" onclick="app.navigate('home'); document.getElementById('search-input').focus();" class="nav-item">
-            <i class="fa-solid fa-magnifying-glass text-xl mb-1"></i> Tìm kiếm
-        </a>
+        <a href="javascript:void(0)" onclick="app.navigate('home')" class="nav-item" id="nav-btn-home"><i class="fa-solid fa-house text-xl mb-1"></i> Trang chủ</a>
+        <a href="javascript:void(0)" onclick="app.navigate('home'); document.getElementById('search-input').focus();" class="nav-item"><i class="fa-solid fa-magnifying-glass text-xl mb-1"></i> Tìm kiếm</a>
         <a href="tel:0398139664" class="nav-item relative top-[-15px]">
-            <div class="w-12 h-12 bg-gradient-to-r from-brand-green to-emerald-400 text-white rounded-full flex items-center justify-center shadow-lg shadow-emerald-200 border-4 border-white animate-bounce">
-                <i class="fa-solid fa-phone text-xl"></i>
-            </div>
-            <span class="mt-1 absolute -bottom-4 whitespace-nowrap text-brand-green">Gọi Lũy</span>
+            <div class="w-12 h-12 bg-gradient-to-r from-brand-green to-emerald-400 text-white rounded-full flex items-center justify-center shadow-lg border-4 border-white animate-bounce"><i class="fa-solid fa-phone text-xl"></i></div>
         </a>
-        <a href="javascript:void(0)" onclick="app.navigate('cart')" class="nav-item relative" id="nav-btn-cart">
-            <i class="fa-solid fa-basket-shopping text-xl mb-1"></i> Giỏ hàng
-            <span id="mobile-cart-count" class="absolute -top-1 right-2 bg-amber-500 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full border border-white">0</span>
-        </a>
+        <a href="javascript:void(0)" onclick="app.navigate('cart')" class="nav-item relative" id="nav-btn-cart"><i class="fa-solid fa-basket-shopping text-xl mb-1"></i> Giỏ hàng<span id="mobile-cart-count" class="absolute -top-1 right-2 bg-amber-500 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full border border-white">0</span></a>
     </nav>
 
-    <div id="toast" class="fixed top-20 md:bottom-10 md:top-auto left-1/2 transform -translate-x-1/2 bg-slate-900/90 backdrop-blur-sm text-white px-6 py-3 rounded-full shadow-xl z-50 transition-all duration-300 opacity-0 -translate-y-10 md:translate-y-10 pointer-events-none flex items-center gap-3 border border-slate-700">
-        <i class="fa-solid fa-circle-check text-brand-green text-lg"></i> <span id="toast-msg" class="font-medium text-sm">Thêm thành công</span>
-    </div>
+    <div id="toast" class="fixed top-20 md:bottom-10 md:top-auto left-1/2 transform -translate-x-1/2 bg-slate-900/90 text-white px-6 py-3 rounded-full shadow-xl z-50 transition-all duration-300 opacity-0 -translate-y-10 md:translate-y-10 pointer-events-none flex items-center gap-3"><i class="fa-solid fa-circle-check text-brand-green text-lg"></i> <span id="toast-msg" class="font-medium text-sm">Thành công</span></div>
 
     <div id="checkout-modal" class="modal-overlay">
         <div class="modal-content relative">
-            <div class="w-16 h-16 bg-brand-green text-white rounded-full flex items-center justify-center text-3xl mx-auto -mt-12 mb-4 border-4 border-white shadow-lg animate-pulse-ring">
-                <i class="fa-solid fa-check"></i>
-            </div>
-            <h3 class="text-xl font-extrabold text-slate-800 mb-2">Đã tạo đơn hàng!</h3>
-            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-5 text-left">
-                <p class="text-sm font-bold text-amber-700 mb-2 flex items-center gap-2">
-                    <i class="fa-solid fa-lightbulb"></i> Lũy hướng dẫn xíu nha:
-                </p>
-                <ol class="text-sm text-slate-700 space-y-2 list-decimal pl-4">
-                    <li>Hệ thống đã tự động <span class="font-bold text-slate-900">Sao chép (Copy)</span> đơn hàng của bạn.</li>
-                    <li>Ứng dụng <span id="modal-app-name" class="font-bold text-brand-zalo">Zalo</span> sẽ được mở lên ngay bây giờ.</li>
-                    <li>Bạn chỉ cần <span class="font-bold text-slate-900 bg-white px-2 py-0.5 rounded border shadow-sm">Dán (Paste)</span> vào khung chat và gửi cho Lũy nhé!</li>
-                </ol>
-            </div>
-            <button id="btn-open-app" class="w-full bg-brand-green text-white font-bold py-3 rounded-xl shadow-md hover:bg-emerald-600 transition flex items-center justify-center gap-2">
-                Mở <span id="modal-btn-name">Zalo</span> ngay (<span id="countdown">5</span>s)
-            </button>
-            <button onclick="document.getElementById('checkout-modal').classList.remove('active')" class="mt-3 text-sm text-slate-500 font-medium hover:text-slate-700 underline">Đóng, tôi chưa muốn gửi</button>
+            <div class="w-16 h-16 bg-brand-green text-white rounded-full flex items-center justify-center text-3xl mx-auto -mt-12 mb-4 border-4 border-white shadow-lg animate-pulse-ring"><i class="fa-solid fa-check"></i></div>
+            <h3 class="text-xl font-extrabold text-slate-800 mb-2">Đã gửi đơn cho Lũy!</h3>
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-5 text-left text-sm text-slate-700">Lũy đã nhận được thông tin. Hệ thống cũng đã tự động copy đơn hàng, bạn nhấn Mở ứng dụng và dán (Paste) gửi cho Lũy để xác nhận nhé!</div>
+            <button id="btn-open-app" class="w-full bg-brand-green text-white font-bold py-3 rounded-xl shadow-md transition flex items-center justify-center gap-2">Mở <span id="modal-app-name">Ứng dụng</span> ngay (<span id="countdown">5</span>s)</button>
+            <span id="modal-btn-name" style="display:none;"></span>
+            <button onclick="document.getElementById('checkout-modal').classList.remove('active')" class="mt-3 text-sm text-slate-500 underline hover:text-slate-800 font-medium">Đóng</button>
         </div>
     </div>
 
     <script>
-        // ==========================================
-        // 1. DATA CẤU HÌNH API GOOGLE SHEETS
-        // ==========================================
         let dbProducts = []; 
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyRjTUkB7cKLYedltBjwKZJUqpDo_NbV6cGJnej-M-fxMdLpIJ3tFibuZfUiwRDKDlYgQ/exec';
 
         async function fetchProducts() {
-            try {
-                // Hiển thị loading state
-                const grid = document.getElementById('product-grid');
-                if (grid) {
-                    grid.innerHTML = `
-                        <div class="col-span-full text-center py-16">
-                            <i class="fa-solid fa-spinner fa-spin text-4xl text-brand-green mb-4"></i>
-                            <p class="text-slate-500 font-medium">Lũy đang dọn hàng ra kệ, bà con đợi xíu nhen...</p>
-                        </div>`;
-                }
+            const grid = document.getElementById('product-grid');
+            if(grid) grid.innerHTML = `<div class="col-span-full text-center py-16"><i class="fa-solid fa-spinner fa-spin text-4xl text-brand-green mb-4"></i><p class="text-slate-500 font-medium">Đang tải dữ liệu...</p></div>`;
 
-                // Gọi API lấy dữ liệu
+            try {
                 const response = await fetch(SCRIPT_URL);
                 const rawData = await response.json();
                 
-                // Chuẩn hóa dữ liệu trả về
                 dbProducts = rawData.map(item => ({
                     id: Number(item.id),
                     name: item.name || '',
                     price: Number(item.price) || 0,
-                    img: item.img || './img/default.jpg',
+                    unit: item.unit || 'phần', 
+                    img: item.img || 'https://via.placeholder.com/300?text=Sang+Lũy',
                     desc: item.desc || '',
-                    category: item.category || 'Chưa phân loại',
+                    category: item.category || 'Tạp Hóa',
                     badge: item.badge || ''
                 }));
 
-                // Render lại giao diện
                 app.renderCategories();
                 app.renderHome();
-
             } catch (error) {
-                console.error('Lỗi lấy hàng từ Google Sheets:', error);
-                const grid = document.getElementById('product-grid');
-                if (grid) {
-                    grid.innerHTML = `
-                        <div class="col-span-full text-center py-16 bg-red-50 rounded-2xl border border-red-200">
-                            <i class="fa-solid fa-triangle-exclamation text-3xl text-red-500 mb-3"></i>
-                            <p class="text-red-600 font-bold mb-1">Ối, không tải được danh sách món!</p>
-                            <p class="text-sm text-red-500 mb-4">Bà con kiểm tra mạng hoặc tải lại trang giúp Lũy nha.</p>
-                            <button onclick="window.location.reload()" class="bg-red-500 text-white px-6 py-2 rounded-full font-bold shadow-sm hover:bg-red-600 transition">Tải Lại Trang</button>
-                        </div>`;
-                }
+                if(grid) grid.innerHTML = `<div class="col-span-full text-center py-16 text-red-500 font-bold">Lỗi kết nối. Vui lòng tải lại trang!</div>`;
             }
         }
 
-        // ==========================================
-        // 2. LOGIC QUẢN LÝ ỨNG DỤNG (STATE & CART)
-        // ==========================================
         const app = {
             cart: [],
             currentView: 'home',
@@ -415,16 +324,10 @@
                 document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
                 document.getElementById('view-' + viewId).classList.add('active');
                 window.scrollTo(0,0);
-
                 document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-                if(document.getElementById('nav-btn-' + viewId)) {
-                    document.getElementById('nav-btn-' + viewId).classList.add('active');
-                }
+                if(document.getElementById('nav-btn-' + viewId)) document.getElementById('nav-btn-' + viewId).classList.add('active');
 
-                if(viewId === 'home') {
-                    this.renderCategories();
-                    this.renderHome();
-                }
+                if(viewId === 'home') { this.renderCategories(); this.renderHome(); }
                 if(viewId === 'detail' && param) this.renderDetail(param);
                 if(viewId === 'cart') this.renderCart();
             },
@@ -438,45 +341,23 @@
                 setTimeout(() => toast.classList.add('opacity-0', '-translate-y-10', 'md:translate-y-10', 'pointer-events-none'), 2000);
             },
 
-            // Thay thế hàm cũ bằng hàm này
             renderCategories: function() {
-                // Tự động quét và lấy các Danh Mục có trong Google Sheets (không bị trùng lặp)
                 const categories = ['Tất cả', ...new Set(dbProducts.map(p => p.category).filter(c => c))];
-                
-                const container = document.getElementById('category-filters');
-                container.innerHTML = categories.map(cat => {
-                    // Mặc định màu xám
-                    let activeClass = 'bg-white text-slate-600 border-slate-200 hover:border-brand-green';
-                    
-                    // Nếu đang được chọn thì bôi xanh
-                    if (this.activeCategory === cat) {
-                        activeClass = 'bg-brand-green text-white border-brand-green shadow-md';
-                    }
-
-                    return `
-                    <button onclick="app.filterCategory('${cat}')" class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold transition border-2 ${activeClass}">
-                        ${cat}
-                    </button>
-                    `;
+                document.getElementById('category-filters').innerHTML = categories.map(cat => {
+                    const activeClass = this.activeCategory === cat ? 'bg-brand-green text-white border-brand-green shadow-md' : 'bg-white text-slate-600 border-slate-200 hover:border-brand-green';
+                    return `<button onclick="app.filterCategory('${cat}')" class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold transition border-2 ${activeClass}">${cat}</button>`;
                 }).join('');
             },
 
-            // Thay thế hàm cũ bằng hàm này
             filterCategory: function(cat) {
                 this.activeCategory = cat;
                 this.searchKeyword = ''; 
                 document.getElementById('search-input').value = '';
-                
-                const title = document.getElementById('grid-title');
-                if(cat === 'Tất cả') {
-                    title.innerHTML = '<i class="fa-solid fa-fire text-amber-500"></i> Đang bán chạy';
-                } else {
-                    title.innerHTML = `<i class="fa-solid fa-tags text-brand-green"></i> Danh mục: ${cat}`;
-                }
-
+                document.getElementById('grid-title').innerHTML = cat === 'Tất cả' ? '<i class="fa-solid fa-fire text-amber-500"></i> Tất Cả Sản Phẩm' : `<i class="fa-solid fa-tags text-brand-green"></i> ${cat}`;
                 this.renderCategories();
                 this.renderHome();
             },
+
             searchProduct: function(keyword) {
                 this.searchKeyword = keyword.toLowerCase().trim();
                 this.activeCategory = 'Tất cả';
@@ -486,50 +367,30 @@
 
             renderHome: function() {
                 const grid = document.getElementById('product-grid');
-                let filteredProducts = dbProducts;
-                
-                if (this.activeCategory !== 'Tất cả') {
-                    filteredProducts = filteredProducts.filter(p => p.category === this.activeCategory);
-                }
-                
-                if (this.searchKeyword !== '') {
-                    filteredProducts = filteredProducts.filter(p => 
-                        p.name.toLowerCase().includes(this.searchKeyword) || 
-                        p.category.toLowerCase().includes(this.searchKeyword)
-                    );
-                }
+                let filtered = dbProducts;
+                if (this.activeCategory !== 'Tất cả') filtered = filtered.filter(p => p.category === this.activeCategory);
+                if (this.searchKeyword) filtered = filtered.filter(p => p.name.toLowerCase().includes(this.searchKeyword) || p.category.toLowerCase().includes(this.searchKeyword));
 
-                if (filteredProducts.length === 0) {
-                    grid.innerHTML = `<div class="col-span-full text-center py-16 bg-white rounded-2xl border border-dashed border-slate-300 text-slate-500 font-medium"><i class="fa-regular fa-face-frown text-3xl mb-3 text-brand-green"></i><br>Chưa tìm thấy món này.<br>Bạn alo hoặc Zalo Lũy đi chợ giùm cho nha!</div>`;
+                if (filtered.length === 0) {
+                    grid.innerHTML = `<div class="col-span-full text-center py-10 text-slate-500">Không tìm thấy món này!</div>`;
                 } else {
-                    grid.innerHTML = filteredProducts.map(p => {
-                        const isSeafood = p.category === 'Hải Sản Biển';
-                        const isCombo = p.category === 'Combo Bữa Ăn';
-                        
-                        let badgeColor = 'bg-brand-green';
-                        if (isSeafood) badgeColor = 'bg-brand-blue';
-                        if (isCombo) badgeColor = 'bg-amber-500';
-
-                        const badgeHtml = p.badge ? `<div class="absolute top-2 left-2 ${badgeColor} text-white text-[10px] font-bold px-2 py-1 rounded-md z-10 uppercase shadow-sm">${p.badge}</div>` : '';
-                        
+                    grid.innerHTML = filtered.map(p => {
+                        const badgeHtml = p.badge ? `<div class="absolute top-2 left-2 bg-brand-green text-white text-[10px] font-bold px-2 py-1 rounded-md z-10 uppercase shadow-sm">${p.badge}</div>` : '';
                         return `
                         <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col h-full cursor-pointer relative overflow-hidden group" onclick="app.navigate('detail', ${p.id})">
                             ${badgeHtml}
                             <div class="relative aspect-square overflow-hidden bg-slate-100">
-                                <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/300?text=Sang+Lũy'">
                             </div>
                             <div class="p-3 md:p-4 flex flex-col flex-grow">
-                                <h3 class="font-bold text-slate-800 text-sm md:text-base mb-1 line-clamp-2 leading-tight group-hover:text-brand-green transition-colors">${p.name}</h3>
-                                <p class="text-[11px] text-slate-500 mb-2 line-clamp-1">${p.desc}</p>
-                                <div class="mt-auto flex justify-between items-end">
-                                    <span class="${isSeafood ? 'text-brand-blue' : 'text-brand-green'} font-extrabold text-base md:text-lg leading-none">${this.formatPrice(p.price)}</span>
-                                    <button onclick="event.stopPropagation(); app.addToCart(${p.id})" class="${isSeafood ? 'bg-sky-50 text-brand-blue hover:bg-brand-blue' : 'bg-emerald-50 text-brand-green hover:bg-brand-green'} w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center hover:text-white transition-colors active:scale-90">
-                                        <i class="fa-solid fa-plus font-bold"></i>
-                                    </button>
+                                <h3 class="font-bold text-slate-800 text-sm md:text-base mb-1 line-clamp-2 leading-tight group-hover:text-brand-green">${p.name}</h3>
+                                <div class="mt-auto flex justify-between items-end pt-2">
+                                    <span class="text-brand-green font-extrabold text-base md:text-lg leading-none">${this.formatPrice(p.price)} <span class="text-xs text-slate-500 font-medium">/ ${p.unit}</span></span>
+                                    <button onclick="event.stopPropagation(); app.addToCart(${p.id}, false)" class="bg-emerald-50 text-brand-green hover:bg-brand-green w-8 h-8 rounded-full flex items-center justify-center hover:text-white transition-colors active:scale-90"><i class="fa-solid fa-plus font-bold"></i></button>
                                 </div>
                             </div>
-                        </div>
-                    `}).join('');
+                        </div>`
+                    }).join('');
                 }
             },
 
@@ -537,83 +398,69 @@
                 const p = dbProducts.find(item => item.id === productId);
                 if(!p) return;
                 
-                const isSeafood = p.category === 'Hải Sản Biển';
-                const isCombo = p.category === 'Combo Bữa Ăn';
-                
-                let themeColorText = 'text-brand-green';
-                let themeColorBg = 'bg-brand-green';
-                let themeColorHover = 'hover:bg-emerald-700';
-                let themeTagBg = 'bg-emerald-100';
+                const otherProducts = dbProducts.filter(item => item.id !== productId);
+                const randomSuggestions = otherProducts.sort(() => 0.5 - Math.random()).slice(0, 4);
 
-                if(isSeafood) {
-                    themeColorText = 'text-brand-blue';
-                    themeColorBg = 'bg-brand-blue';
-                    themeColorHover = 'hover:bg-sky-700';
-                    themeTagBg = 'bg-sky-100';
-                } else if(isCombo) {
-                    themeColorText = 'text-amber-600';
-                    themeColorBg = 'bg-amber-500';
-                    themeColorHover = 'hover:bg-amber-600';
-                    themeTagBg = 'bg-amber-100';
-                }
-
-                const container = document.getElementById('detail-content');
-                container.innerHTML = `
-                    <div class="w-full md:w-1/2">
-                        <img src="${p.img}" alt="${p.name}" class="w-full rounded-2xl shadow-sm object-cover aspect-square border border-slate-100">
-                    </div>
-                    <div class="w-full md:w-1/2 flex flex-col py-2">
-                        <span class="${themeTagBg} ${themeColorText} text-xs font-bold px-3 py-1 rounded-md w-max mb-3 uppercase tracking-wider">${p.category}</span>
-                        <h1 class="text-2xl md:text-3xl font-extrabold text-slate-800 mb-2 leading-tight">${p.name}</h1>
-                        <p class="${themeColorText} text-3xl font-black mb-6">${this.formatPrice(p.price)}</p>
-                        
-                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 mb-6">
-                            <p class="text-slate-700 font-medium leading-relaxed">${p.desc}</p>
+                let htmlContent = `
+                    <div class="flex flex-col md:flex-row gap-6 lg:gap-10 mb-10">
+                        <div class="w-full md:w-1/2">
+                            <img src="${p.img}" alt="${p.name}" class="w-full rounded-2xl shadow-sm object-cover aspect-square border border-slate-100" onerror="this.src='https://via.placeholder.com/500?text=Sang+Lũy'">
                         </div>
-                        
-                        <ul class="space-y-2 mb-8 text-sm text-slate-600 font-medium">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check-circle ${themeColorText}"></i> Hàng tuyển chọn, cam kết tươi sạch.</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check-circle ${themeColorText}"></i> Cân đúng, bán đủ, uy tín.</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check-circle ${themeColorText}"></i> Giao hàng cẩn thận tại Lâm Đồng.</li>
-                        </ul>
-                        
-                        <div class="mt-auto">
-                            <button onclick="app.addToCart(${p.id}, true)" class="w-full ${themeColorBg} ${themeColorHover} text-white py-4 rounded-xl font-extrabold text-lg transition shadow-lg shadow-slate-200 flex justify-center items-center gap-2 active:scale-95">
-                                <i class="fa-solid fa-basket-shopping"></i> Thêm Vào Giỏ Ngay
+                        <div class="w-full md:w-1/2 flex flex-col py-2">
+                            <span class="bg-emerald-100 text-brand-green text-xs font-bold px-3 py-1 rounded-md w-max mb-3 uppercase">${p.category}</span>
+                            <h1 class="text-2xl md:text-3xl font-extrabold text-slate-800 mb-2">${p.name}</h1>
+                            <p class="text-brand-green text-3xl font-black mb-6">${this.formatPrice(p.price)} <span class="text-base text-slate-500 font-medium">/ ${p.unit}</span></p>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 mb-6"><p class="text-slate-700 font-medium">${p.desc}</p></div>
+                            <div class="mt-auto flex flex-col gap-3">
+                            <button onclick="app.addToCart(${p.id}, false)" class="w-full bg-brand-green text-white py-3.5 rounded-xl font-extrabold text-lg transition shadow-lg flex justify-center items-center gap-2 active:scale-95">
+                                <i class="fa-solid fa-cart-plus"></i> Thêm Vào Giỏ
                             </button>
+                            <div class="flex gap-3">
+                                <button onclick="app.navigate('home')" class="flex-1 bg-white border-2 border-slate-200 text-slate-600 hover:border-brand-green hover:text-brand-green py-3 rounded-xl font-bold transition flex justify-center items-center gap-2 active:scale-95">
+                                    <i class="fa-solid fa-store"></i> Sắm Tiếp
+                                </button>
+                                <button onclick="app.navigate('cart')" class="flex-1 bg-amber-500 text-white py-3 rounded-xl font-bold transition shadow-md hover:bg-amber-600 flex justify-center items-center gap-2 active:scale-95">
+                                    <i class="fa-solid fa-credit-card"></i> Thanh Toán
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                `;
+                        </div>
+                    </div>`;
+
+                if (randomSuggestions.length > 0) {
+                    htmlContent += `<div class="border-t border-slate-100 pt-8 mt-4"><h3 class="text-xl font-bold text-slate-800 mb-6">Lũy gợi ý thêm</h3><div class="grid grid-cols-2 md:grid-cols-4 gap-3">`;
+                    randomSuggestions.forEach(sug => {
+                        htmlContent += `
+                            <div class="bg-white rounded-xl shadow-sm border border-slate-100 flex flex-col cursor-pointer overflow-hidden group" onclick="app.navigate('detail', ${sug.id})">
+                                <div class="relative aspect-square overflow-hidden bg-slate-50"><img src="${sug.img}" class="w-full h-full object-cover group-hover:scale-110 transition-transform" onerror="this.src='https://via.placeholder.com/300'"></div>
+                                <div class="p-3 flex flex-col flex-grow">
+                                    <h4 class="font-bold text-slate-700 text-sm mb-1 line-clamp-2">${sug.name}</h4>
+                                    <div class="mt-auto flex justify-between items-center pt-2">
+                                        <span class="text-brand-green font-black text-sm">${this.formatPrice(sug.price)}</span>
+                                        <button onclick="event.stopPropagation(); app.addToCart(${sug.id}, false)" class="w-7 h-7 rounded-full bg-slate-100 hover:bg-brand-green hover:text-white flex items-center justify-center"><i class="fa-solid fa-plus text-xs"></i></button>
+                                    </div>
+                                </div>
+                            </div>`;
+                    });
+                    htmlContent += `</div></div>`;
+                }
+                document.getElementById('detail-content').innerHTML = htmlContent;
             },
 
             addToCart: function(productId, goCart = false) {
                 const product = dbProducts.find(p => p.id === productId);
                 const existingItem = this.cart.find(item => item.id === productId);
-                
-                if(existingItem) {
-                    existingItem.qty += 1;
-                } else {
-                    this.cart.push({ ...product, qty: 1 });
-                }
-                
+                if(existingItem) existingItem.qty += 1; else this.cart.push({ ...product, qty: 1 });
                 this.updateCartUI();
-                
-                // LƯU GIỎ HÀNG VÀO LOCALSTORAGE
                 localStorage.setItem('sangluy_cart', JSON.stringify(this.cart));
-
-                if(goCart) this.navigate('cart');
-                else this.showToast('Đã lấy thêm 1 ' + product.name);
+                if(goCart) this.navigate('cart'); else this.showToast('Đã thêm: ' + product.name);
             },
 
             changeQty: function(index, delta) {
                 this.cart[index].qty += delta;
                 if(this.cart[index].qty <= 0) this.cart.splice(index, 1);
-                
                 this.updateCartUI();
-                
-                // CẬP NHẬT LẠI LOCALSTORAGE KHI THAY ĐỔI SỐ LƯỢNG
                 localStorage.setItem('sangluy_cart', JSON.stringify(this.cart));
-                
                 this.renderCart();
             },
 
@@ -621,57 +468,40 @@
                 const totalItems = this.cart.reduce((sum, item) => sum + item.qty, 0);
                 document.getElementById('cart-count').innerText = totalItems;
                 document.getElementById('mobile-cart-count').innerText = totalItems;
-                
-                const badges = [document.getElementById('cart-count'), document.getElementById('mobile-cart-count')];
-                badges.forEach(b => {
-                    b.classList.remove('animate-pop');
-                    void b.offsetWidth;
-                    b.classList.add('animate-pop');
-                });
             },
 
             renderCart: function() {
                 const container = document.getElementById('cart-items');
                 if(this.cart.length === 0) {
-                    container.innerHTML = `<div class="text-center py-16"><i class="fa-solid fa-basket-shopping text-5xl text-slate-200 mb-4"></i><p class="text-slate-500 font-medium text-lg">Giỏ hàng đang trống.</p><p class="text-sm text-slate-400 mb-6">Hãy chọn thêm vài món ngon nhé!</p><button onclick="app.navigate('home')" class="bg-brand-green text-white px-6 py-2 rounded-full font-bold shadow-md">Mua Sắm Ngay</button></div>`;
+                    container.innerHTML = `<div class="text-center py-10"><p class="text-slate-500 font-medium">Giỏ hàng đang trống.</p></div>`;
                     document.getElementById('cart-total-price').innerText = '0đ';
                     return;
                 }
-
                 let total = 0;
                 container.innerHTML = this.cart.map((item, index) => {
                     total += item.price * item.qty;
                     return `
-                    <div class="flex items-center gap-3 md:gap-4 py-4 border-b border-slate-100 last:border-0">
-                        <img src="${item.img}" class="w-16 h-16 md:w-20 md:h-20 object-cover rounded-xl border border-slate-100">
+                    <div class="flex items-center gap-3 py-4 border-b border-slate-100 last:border-0">
+                        <img src="${item.img}" class="w-16 h-16 object-cover rounded-xl border border-slate-100" onerror="this.src='https://via.placeholder.com/100'">
                         <div class="flex-1">
-                            <h4 class="font-bold text-slate-800 text-sm md:text-base line-clamp-2 leading-tight mb-1">${item.name}</h4>
-                            <div class="text-brand-green font-black text-sm md:text-base">${this.formatPrice(item.price)}</div>
+                            <h4 class="font-bold text-slate-800 text-sm md:text-base line-clamp-2">${item.name}</h4>
+                            <div class="text-brand-green font-black text-sm">${this.formatPrice(item.price)} <span class="text-xs text-slate-500 font-medium">/ ${item.unit}</span></div>
                         </div>
                         <div class="flex items-center bg-slate-50 rounded-lg border border-slate-200 shadow-sm p-1">
-                            <button onclick="app.changeQty(${index}, -1)" class="w-7 h-7 flex items-center justify-center text-slate-600 font-bold active:bg-slate-200 rounded-md">-</button>
-                            <span class="w-6 text-center text-sm font-bold text-slate-800">${item.qty}</span>
-                            <button onclick="app.changeQty(${index}, 1)" class="w-7 h-7 flex items-center justify-center text-slate-600 font-bold active:bg-slate-200 rounded-md">+</button>
+                            <button onclick="app.changeQty(${index}, -1)" class="w-7 h-7 flex items-center justify-center font-bold active:bg-slate-200 rounded-md">-</button>
+                            <span class="w-6 text-center text-sm font-bold">${item.qty}</span>
+                            <button onclick="app.changeQty(${index}, 1)" class="w-7 h-7 flex items-center justify-center font-bold active:bg-slate-200 rounded-md">+</button>
                         </div>
-                    </div>
-                `}).join('');
+                    </div>`
+                }).join('');
                 document.getElementById('cart-total-price').innerText = this.formatPrice(total);
             },
 
             copyToClipboardSafe: function(text) {
                 const textArea = document.createElement("textarea");
-                textArea.value = text;
-                textArea.style.position = "fixed";
-                textArea.style.left = "-999999px";
-                textArea.style.top = "-999999px";
-                document.body.appendChild(textArea);
-                textArea.focus();
-                textArea.select();
-                try {
-                    document.execCommand('copy');
-                } catch (err) {
-                    console.error('Không thể copy', err);
-                }
+                textArea.value = text; textArea.style.position = "fixed"; textArea.style.left = "-999999px";
+                document.body.appendChild(textArea); textArea.select();
+                try { document.execCommand('copy'); } catch (err) {}
                 document.body.removeChild(textArea);
             },
 
@@ -680,112 +510,91 @@
             openAppAction: function(platform, url) {
                 window.open(url, '_blank');
                 document.getElementById('checkout-modal').classList.remove('active');
-                this.cart = [];
-                this.updateCartUI();
-                
-                // XÓA GIỎ HÀNG SAU KHI ĐÃ ĐẶT HÀNG XONG
+                this.cart = []; this.updateCartUI();
                 localStorage.removeItem('sangluy_cart');
-                
                 this.navigate('home');
             },
 
-            checkout: function(platform) {
-                if(this.cart.length === 0) return alert('Giỏ hàng trống! Bạn chọn thêm món nha.');
-                
-                const name = document.getElementById('customer-name').value;
-                const phone = document.getElementById('customer-phone').value;
-                const address = document.getElementById('customer-address').value;
+            checkoutAndSave: async function(platform) {
+                if(this.cart.length === 0) return alert('Giỏ hàng trống!');
+                const name = document.getElementById('customer-name').value.trim();
+                const phone = document.getElementById('customer-phone').value.trim();
+                const address = document.getElementById('customer-address').value.trim();
+                if(!name || !phone || !address) return alert('Vui lòng điền đủ Tên, SĐT và Địa chỉ!');
 
-                if(!name || !phone || !address) return alert('Lũy cần đủ Tên, SĐT và Địa chỉ để giao chính xác nha!');
+                const btnId = platform === 'zalo' ? 'btn-zalo' : 'btn-fb';
+                const btn = document.getElementById(btnId);
+                const originalHtml = btn.innerHTML;
+                btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Đang tạo đơn...`;
+                btn.disabled = true; btn.classList.add('opacity-80', 'cursor-wait');
 
                 let total = 0;
-                let orderText = `🛒 ĐƠN HÀNG TỪ WEB SANG LŨY\n`;
-                orderText += `--------------------------\n`;
-                orderText += `👤 Tên: ${name}\n`;
-                orderText += `📞 SĐT: ${phone}\n`;
-                orderText += `📍 Địa chỉ & Ghi chú: ${address}\n`;
-                orderText += `--------------------------\n`;
+                let itemsForSheet = ''; 
+                let orderText = `🛒 ĐƠN HÀNG TỪ WEB SANG LŨY\n--------------------------\n👤 Tên: ${name}\n📞 SĐT: ${phone}\n📍 Địa chỉ: ${address}\n--------------------------\n`;
+                
                 this.cart.forEach((item, i) => {
-                    orderText += `${i+1}. ${item.name} (x${item.qty})\n`;
+                    const line = `${item.qty} ${item.unit || 'phần'} ${item.name}`;
+                    itemsForSheet += `- ${line}\n`;
+                    orderText += `${i+1}. ${item.name} - ${item.qty} ${item.unit || 'phần'}\n`;
                     total += item.price * item.qty;
                 });
-                orderText += `--------------------------\n`;
-                orderText += `💰 TỔNG CỘNG: ${this.formatPrice(total)}\n`;
-                orderText += `(Lũy soạn hàng rồi sẽ báo lại ngay ạ!)`;
+                
+                orderText += `--------------------------\n💰 TỔNG CỘNG: ${this.formatPrice(total)}\n(Lũy soạn hàng rồi sẽ báo lại ngay ạ!)`;
+
+                const orderData = { name: name, phone: phone, address: address, items: itemsForSheet, total: this.formatPrice(total) };
+
+                // Fix triệt để lỗi CORS ở đây bằng mode: 'no-cors'
+                try {
+                    await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                        body: JSON.stringify(orderData)
+                    });
+                } catch (error) {
+                    console.error("Lỗi gửi ngầm Google Sheets:", error);
+                } finally {
+                    btn.innerHTML = originalHtml; btn.disabled = false; btn.classList.remove('opacity-80', 'cursor-wait');
+                }
 
                 const encodedText = encodeURIComponent(orderText);
-                let appUrl = '';
-                let appName = '';
-                let themeClass = '';
-
+                let appUrl = ''; let appName = ''; let themeClass = '';
                 this.copyToClipboardSafe(orderText);
 
                 if(platform === 'facebook') {
                     appUrl = 'https://www.facebook.com/taphoasangluy'; 
-                    appName = 'Messenger';
-                    themeClass = 'text-brand-fb';
-                    document.getElementById('btn-open-app').className = "w-full bg-brand-fb text-white font-bold py-3 rounded-xl shadow-md hover:bg-blue-700 transition flex items-center justify-center gap-2";
+                    appName = 'Messenger'; themeClass = 'text-brand-fb';
+                    document.getElementById('btn-open-app').className = "w-full bg-brand-fb text-white font-bold py-3 rounded-xl shadow-md transition flex items-center justify-center gap-2";
                 } else if (platform === 'zalo') {
                     appUrl = `https://zalo.me/0398139664?text=${encodedText}`;
-                    appName = 'Zalo';
-                    themeClass = 'text-brand-zalo';
-                    document.getElementById('btn-open-app').className = "w-full bg-brand-zalo text-white font-bold py-3 rounded-xl shadow-md hover:bg-blue-600 transition flex items-center justify-center gap-2";
+                    appName = 'Zalo'; themeClass = 'text-brand-zalo';
+                    document.getElementById('btn-open-app').className = "w-full bg-brand-zalo text-white font-bold py-3 rounded-xl shadow-md transition flex items-center justify-center gap-2";
                 }
 
                 document.getElementById('modal-app-name').innerText = appName;
                 document.getElementById('modal-app-name').className = `font-bold ${themeClass}`;
-                document.getElementById('modal-btn-name').innerText = appName;
                 
                 const modal = document.getElementById('checkout-modal');
                 modal.classList.add('active');
-
-                let seconds = 5;
-                document.getElementById('countdown').innerText = seconds;
+                let seconds = 5; document.getElementById('countdown').innerText = seconds;
                 
                 clearInterval(this.countdownTimer); 
-                
-                const btnOpen = document.getElementById('btn-open-app');
-                btnOpen.onclick = () => {
-                    clearInterval(this.countdownTimer);
-                    this.openAppAction(platform, appUrl);
-                };
-
+                document.getElementById('btn-open-app').onclick = () => { clearInterval(this.countdownTimer); this.openAppAction(platform, appUrl); };
                 this.countdownTimer = setInterval(() => {
-                    seconds--;
-                    document.getElementById('countdown').innerText = seconds;
-                    if(seconds <= 0) {
-                        clearInterval(this.countdownTimer);
-                        if(modal.classList.contains('active')) {
-                            this.openAppAction(platform, appUrl);
-                        }
-                    }
+                    seconds--; document.getElementById('countdown').innerText = seconds;
+                    if(seconds <= 0) { clearInterval(this.countdownTimer); if(modal.classList.contains('active')) this.openAppAction(platform, appUrl); }
                 }, 1000);
             }
         };
 
-        function setRealTime() {
-            const now = new Date();
-            const timeStr = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
-            const dateStr = now.getDate().toString().padStart(2, '0') + '/' + (now.getMonth() + 1).toString().padStart(2, '0');
-            document.getElementById('real-time-clock').innerText = `Cập nhật: ${timeStr} - ${dateStr}`;
-        }
-
-        // ==========================================
-        // 3. KHỞI TẠO ỨNG DỤNG KHI TẢI TRANG
-        // ==========================================
         window.onload = () => {
-            setRealTime();
+            const now = new Date();
+            document.getElementById('real-time-clock').innerText = `Hôm nay: ${now.getDate().toString().padStart(2, '0')}/${(now.getMonth()+1).toString().padStart(2, '0')}`;
             
-            // Lấy lại giỏ hàng cũ nếu khách lỡ F5 hoặc thoát web
             const savedCart = localStorage.getItem('sangluy_cart');
-            if(savedCart) {
-                app.cart = JSON.parse(savedCart);
-                app.updateCartUI(); 
-            }
-
-            app.navigate('home');
+            if(savedCart) { app.cart = JSON.parse(savedCart); app.updateCartUI(); }
             
-            // Bắt đầu lấy dữ liệu từ Google Sheets
+            app.navigate('home');
             fetchProducts(); 
         };
     </script>
