@@ -1,0 +1,35 @@
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  gap: 8px; /* Khoảng cách giữa các nút */
+}
+
+.page-item a {
+  text-decoration: none;
+  color: #333;
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+/* Hiệu ứng khi di chuột vào */
+.page-item a:hover {
+  background-color: #f0f0f0;
+  border-color: #bbb;
+}
+
+/* Trạng thái trang hiện tại */
+.page-item.active a {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* Trạng thái nút bị vô hiệu hóa (ví dụ đang ở trang 1 thì nút Trước bị mờ) */
+.page-item.disabled a {
+  color: #ccc;
+  pointer-events: none;
+  background-color: #fafafa;
+}
